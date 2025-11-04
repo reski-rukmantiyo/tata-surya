@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rasi Bintang dan Perubahannya</title>
+    <title>Rasi Bintang dan Perubahannya - Olimpiade Astronomi</title>
     <style>
         * {
             margin: 0;
@@ -277,6 +277,20 @@
             color: #ffd700;
         }
 
+        .olympiad-level {
+            color: #ff5722;
+            font-weight: bold;
+        }
+
+        .equation {
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
         footer {
             text-align: center;
             margin-top: 40px;
@@ -289,10 +303,11 @@
 <body>
     <div class="container">
         <h1>⭐ Rasi Bintang dan Perubahannya Seiring Waktu</h1>
+        <p style="text-align: center; margin-bottom: 20px;"><span class="olympiad-level">Tingkat Olimpiade Sains Nasional - Astronomi</span></p>
         
         <div class="intro-section">
             <div class="definition">
-                Rasi bintang adalah pengelompokan bintang-bintang yang tampak membentuk pola tertentu di langit malam. Pola ini diciptakan oleh imajinasi manusia untuk memudahkan identifikasi dan pengamatan bintang.
+                Rasi bintang (constellation) adalah pengelompokan konvensional bintang-bintang yang tampak membentuk pola tertentu di bola langit. Dalam astronomi modern, 88 rasi bintang membagi bola langit menjadi wilayah yang digunakan untuk identifikasi objek langit.
             </div>
         </div>
         
@@ -316,37 +331,51 @@
                     <div class="orion-line line6"></div>
                 </div>
             </div>
-            <div style="position: absolute; top: 10px; left: 10px; color: #ffd700;">Rasi Orion</div>
+            <div style="position: absolute; top: 10px; left: 10px; color: #ffd700;">Rasi Orion (88 rasi modern)</div>
         </div>
         
         <div class="change-factors">
             <div class="factor-card">
                 <div class="card-title">
                     <div class="icon">🔄</div>
-                    <h2>Pergerakan Presesi</h2>
+                    <h2>Presesi Equinox</h2>
                 </div>
                 <div class="explanation">
-                    <p>Bumi berputar seperti gasing, menyebabkan poros bumi berubah arah secara perlahan dalam siklus 26.000 tahun. Akibatnya, posisi rasi bintang yang terlihat dari bumi berubah seiring waktu.</p>
+                    <p>Poros bumi berpresesi dengan periode 25.772 tahun akibat torsi dari bulan dan matahari pada tonjolan equatorial bumi. Ini menyebabkan pergeseran posisi equinox sekitar 50,3\" per tahun.</p>
+                </div>
+                <div class="equation">
+                    P = 2π/(ω cos ε) ≈ 25.772 tahun<br>
+                    dψ/dt = 50,3\"/tahun (presesi umum)
                 </div>
             </div>
             
             <div class="factor-card">
                 <div class="card-title">
                     <div class="icon">궤</div>
-                    <h2>Revolusi Bumi</h2>
+                    <h2>Revolusi Bumi & Paralaks</h2>
                 </div>
                 <div class="explanation">
-                    <p>Bumi mengelilingi matahari setiap tahun, membuat rasi bintang yang terlihat berubah sepanjang musim. Rasi yang terlihat di musim dingin berbeda dengan yang terlihat di musim panas.</p>
+                    <p>Bumi mengelilingi matahari setiap 365,256 hari, menyebabkan paralaks tahunan bintang dengan amplitudo maksimum 1\" untuk bintang pada jarak 1 parsec (paralaks = 1/distance).</p>
+                </div>
+                <div class="equation">
+                    π\" = 1/d(pc)<br>
+                    Δλ = π sin(θ) cos(α)<br>
+                    Δβ = π cos(θ) sin(α)
                 </div>
             </div>
             
             <div class="factor-card">
                 <div class="card-title">
                     <div class="icon">⏳</div>
-                    <h2>Gerak Sejati Bintang</h2>
+                    <h2>Proper Motion & Radial Velocity</h2>
                 </div>
                 <div class="explanation">
-                    <p>Bintang-bintang juga bergerak dalam ruang angkasa dengan kecepatan dan arah yang berbeda. Dalam jangka waktu ribuan tahun, pergerakan ini akan mengubah bentuk rasi bintang secara signifikan.</p>
+                    <p>Bintang memiliki gerak sejati (proper motion) dan kecepatan radial yang menyebabkan perubahan posisi mereka dalam jangka waktu puluhan hingga ratusan tahun. Gerak sejati Barnard's Star: 10,3\"/tahun.</p>
+                </div>
+                <div class="equation">
+                    μ = √(μₐ² + μδ²)<br>
+                    v = 4,74μ/d + vᵣ<br>
+                    (kecepatan tangensial + radial)
                 </div>
             </div>
         </div>
@@ -367,14 +396,14 @@
                 <div class="time-label time-label-5">25.000 tahun</div>
             </div>
             <p style="text-align: center; margin-top: 20px;">
-                Dalam 26.000 tahun, rasi bintang akan kembali ke posisi semula karena siklus presesi bumi.
+                Dalam 25.772 tahun, rasi bintang akan kembali ke posisi semula karena siklus presesi equinox lengkap.
             </p>
         </div>
         
         <div class="observation-changes">
             <div class="observation-card">
                 <div class="observation-icon">🌅</div>
-                <h3>Perubahan Musiman</h3>
+                <h3>Perubahan Musiman (Annual Motion)</h3>
                 <div class="sky-view">
                     <div class="sky-star" style="top: 30%; left: 20%; width: 3px; height: 3px;"></div>
                     <div class="sky-star" style="top: 40%; left: 30%; width: 4px; height: 4px;"></div>
@@ -382,12 +411,12 @@
                     <div class="sky-star" style="top: 50%; left: 50%; width: 5px; height: 5px;"></div>
                     <div class="north-star"></div>
                 </div>
-                <p>Rasi berbeda terlihat di musim berbeda karena posisi bumi mengelilingi matahari.</p>
+                <p>Rasi berbeda terlihat di musim berbeda karena posisi bumi mengelilingi matahari (efek paralaks tahunan).</p>
             </div>
             
             <div class="observation-card">
                 <div class="observation-icon">🌃</div>
-                <h3>Perubahan Harian</h3>
+                <h3>Perubahan Harian (Diurnal Motion)</h3>
                 <div class="sky-view">
                     <div class="sky-star" style="top: 25%; left: 15%; width: 3px; height: 3px;"></div>
                     <div class="sky-star" style="top: 35%; left: 25%; width: 4px; height: 4px;"></div>
@@ -395,12 +424,12 @@
                     <div class="sky-star" style="top: 45%; left: 45%; width: 5px; height: 5px;"></div>
                     <div class="north-star"></div>
                 </div>
-                <p>Rasi tampak bergerak dari timur ke barat sepanjang malam karena rotasi bumi.</p>
+                <p>Rasi tampak bergerak dari timur ke barat sepanjang malam karena rotasi bumi (efek gerak diurnal).</p>
             </div>
             
             <div class="observation-card">
                 <div class="observation-icon">🗓️</div>
-                <h3>Perubahan Jangka Panjang</h3>
+                <h3>Perubahan Jangka Panjang (Secular Motion)</h3>
                 <div class="sky-view">
                     <div class="sky-star" style="top: 20%; left: 10%; width: 3px; height: 3px;"></div>
                     <div class="sky-star" style="top: 40%; left: 20%; width: 4px; height: 4px;"></div>
@@ -408,7 +437,7 @@
                     <div class="sky-star" style="top: 50%; left: 40%; width: 5px; height: 5px;"></div>
                     <div class="north-star"></div>
                 </div>
-                <p>Dalam ribuan tahun, bentuk rasi akan berubah karena gerak sejati bintang.</p>
+                <p>Dalam ribuan tahun, bentuk rasi akan berubah karena gerak sejati bintang dan presesi equinox.</p>
             </div>
         </div>
         
@@ -417,37 +446,48 @@
                 <div class="earth-circle"></div>
                 <div class="orbit-circle"></div>
                 <div class="arrow" style="top: 30%; left: 70%;">→</div>
-                <div style="position: absolute; top: 10px; left: 10px; color: #ffd700;">Revolusi Bumi</div>
+                <div style="position: absolute; top: 10px; left: 10px; color: #ffd700;">Revolusi Bumi (365,256 hari)</div>
             </div>
             
             <div class="diagram">
                 <div class="earth-circle"></div>
                 <div class="arrow" style="top: 30%; left: 70%;">↻</div>
-                <div style="position: absolute; top: 10px; left: 10px; color: #ffd700;">Rotasi Bumi</div>
+                <div style="position: absolute; top: 10px; left: 10px; color: #ffd700;">Rotasi Bumi (23j 56m 4s)</div>
             </div>
             
         </div>
         
         <div class="intro-section">
-            <h3>Dampak Perubahan Rasi Bintang</h3>
+            <h3>Koordinat Langit & Transformasi</h3>
+            <div class="equation">
+                α(t) = α₀ + μₐ(t - t₀) + ...<br>
+                δ(t) = δ₀ + μδ(t - t₀) + ...
+            </div>
+            <p style="text-align: center; margin-top: 10px;">
+                Transformasi koordinat horison ↔ equatorial ↔ ekliptika memerlukan koreksi presesi dan nutasi.
+            </p>
+            
             <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
                 <div style="flex: 1; min-width: 250px; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px;">
-                    <h4>.Navigator Tradisional</h4>
-                    <p>Perubahan rasi bintang memengaruhi teknik navigasi tradisional yang digunakan pelaut dan pengembara kuno.</p>
+                    <h4>Sistem Koordinat Horizontal</h4>
+                    <p>Azimuth (A): 0°-360° dari utara searah jarum jam<br>
+                    Altitude (a): -90° hingga +90° dari horizon</p>
                 </div>
                 <div style="flex: 1; min-width: 250px; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px;">
-                    <h4>Penanggalan Kuno</h4>
-                    <p>Banyak peradaban menggunakan posisi rasi bintang untuk menentukan musim dan membuat kalender.</p>
+                    <h4>Sistem Koordinat Equatorial</h4>
+                    <p>Right Ascension (α): 0h-24h sepanjang equator<br>
+                    Declination (δ): -90° hingga +90° dari equator</p>
                 </div>
                 <div style="flex: 1; min-width: 250px; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px;">
-                    <h4>Mitos dan Legenda</h4>
-                    <p>Perubahan bentuk rasi bintang memengaruhi mitos dan cerita rakyat yang berkembang dalam berbagai budaya.</p>
+                    <h4>Sistem Koordinat Ekliptika</h4>
+                    <p>Ecliptic Longitude (λ): 0°-360° dari equinox<br>
+                    Ecliptic Latitude (β): -90° hingga +90° dari ekliptika</p>
                 </div>
             </div>
         </div>
         
         <footer>
-            <p>Rasi bintang yang kita lihat hari ini akan terus berubah seiring waktu karena kombinasi pergerakan bumi dan bintang itu sendiri. Dalam jangka waktu yang sangat panjang, rasi-rasi yang kita kenal akan terlihat sangat berbeda.</p>
+            <p>Rasi bintang yang kita amati saat ini adalah representasi sementara dari konfigurasi bintang yang terus berubah karena gerakan kompleks bumi dan bintang itu sendiri. Dalam skala waktu astronomi, konstelasi yang kita kenal saat ini akan sangat berbeda dalam beberapa ribu tahun ke depan.</p>
         </footer>
     </div>
 </body>

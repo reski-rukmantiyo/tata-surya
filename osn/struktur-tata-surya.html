@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Struktur Tata Surya dan Komponen Utamanya</title>
+    <title>Struktur Tata Surya dan Komponen Utamanya - Olimpiade Astronomi</title>
     <style>
         * {
             margin: 0;
@@ -187,11 +187,26 @@
             opacity: 0.8;
             margin-top: 20px;
         }
+
+        .equation {
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .olympiad-level {
+            color: #ff5722;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>🌌 Struktur Tata Surya dan Komponen Utamanya</h1>
+        <p style="text-align: center; margin-bottom: 20px;"><span class="olympiad-level">Tingkat Olimpiade Sains Nasional - Astronomi</span></p>
         
         <div class="solar-system">
             <div class="orbit-container">
@@ -250,70 +265,105 @@
 
         <div class="info-grid">
             <div class="info-card">
-                <h3>🌟 Matahari</h3>
+                <h3>🌟 Matahari - Bintang Deret Utama</h3>
                 <ul>
-                    <li>Bintang pusat tata surya</li>
-                    <li>Sumber energi dan cahaya</li>
-                    <li>99,86% massa total tata surya</li>
-                    <li>Suhu permukaan: ~5.500°C</li>
-                    <li>Terdiri dari hidrogen dan helium</li>
+                    <li>Bintang deret utama kelas G2V (G yellow dwarf)</li>
+                    <li>Massa: 1,989 × 10³⁰ kg (333.000 × massa Bumi)</li>
+                    <li>Jari-jari: 696.340 km (109 × jari-jari Bumi)</li>
+                    <li>Luminositas: 3,828 × 10²⁶ watt</li>
+                    <li>Komposisi: 73,46% Hidrogen, 24,85% Helium, 1,69% unsur berat</li>
+                    <li>Suhu efektif fotosfer: 5.778 K</li>
+                    <li>Periode rotasi diferensial: 25,4 hari di ekuator, 35 hari di kutub</li>
+                </ul>
+                <div class="equation">
+                    L☉ = 4πR☉²σTₑ⁴<br>
+                    (Hukum Stefan-Boltzmann)
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🪐 Planet Terestrial (Inner Planets)</h3>
+                <ul>
+                    <li><strong>Merkurius:</strong> a=0,39 AU, e=0,206, P=88 hari, R=2.440 km</li>
+                    <li><strong>Venus:</strong> a=0,72 AU, e=0,007, P=225 hari, R=6.052 km</li>
+                    <li><strong>Bumi:</strong> a=1,00 AU, e=0,017, P=365,25 hari, R=6.371 km</li>
+                    <li><strong>Mars:</strong> a=1,52 AU, e=0,093, P=687 hari, R=3.390 km</li>
+                    <li>Komposisi silikat dan logam, kerak tipis</li>
+                    <li>Densitas tinggi (3-5,5 g/cm³)</li>
+                </ul>
+                <div class="equation">
+                    a³/P² = GM☉/4π²<br>
+                    (Hukum Kepler III)
+                </div>
+            </div>
+
+            <div class="info-card">
+                <h3>🌌 Planet Raksasa (Outer Planets)</h3>
+                <ul>
+                    <li><strong>Jupiter:</strong> a=5,20 AU, M=317,8M⊕, R=69.911 km, 95 satelit</li>
+                    <li><strong>Saturnus:</strong> a=9,58 AU, M=95,2M⊕, R=58.232 km, cincin kompleks</li>
+                    <li><strong>Uranus:</strong> a=19,22 AU, M=14,5M⊕, R=25.362 km, θ=97,8°</li>
+                    <li><strong>Neptunus:</strong> a=30,05 AU, M=17,1M⊕, R=24.622 km, angin 2.100 km/jam</li>
+                    <li>Komposisi dominan H₂ dan He, densitas rendah (0,7-1,6 g/cm³)</li>
+                    <li>Sistem magnetik kompleks dan banyak satelit</li>
                 </ul>
             </div>
 
             <div class="info-card">
-                <h3>🪐 Planet Dalam</h3>
+                <h3>☄️ Objek Trans-Neptunian & Sabuk</h3>
                 <ul>
-                    <li><strong>Merkurius:</strong> Planet terdekat, sangat panas</li>
-                    <li><strong>Venus:</strong> Planet terpanas, atmosfer tebal</li>
-                    <li><strong>Bumi:</strong> Satu-satunya planet berpenghuni</li>
-                    <li><strong>Mars:</strong> Planet merah, memiliki kutub es</li>
-                    <li>Terbuat dari batuan dan logam</li>
+                    <li><strong>Sabuk Asteroid:</strong> 2,2-3,2 AU, 1,1-4,2×10¹¹ kg total</li>
+                    <li><strong>Sabuk Kuiper:</strong> 30-50 AU, populasi objek trans-neptunian</li>
+                    <li><strong>Disc Dispersi:</strong> 50-100 AU, populasi objek jangka panjang</li>
+                    <li><strong>Awan Oort:</strong> 2.000-100.000 AU, sumber komet jangka panjang</li>
+                    <li><strong>Satelit Alam:</strong> 200+ satelit alam terkonfirmasi</li>
+                    <li><strong>Komet:</strong> Nukleus es dan debu, coma, dan tail ion/Debye</li>
                 </ul>
             </div>
 
             <div class="info-card">
-                <h3>🌌 Planet Luar</h3>
+                <h3>⚖️ Dinamika Tata Surya</h3>
                 <ul>
-                    <li><strong>Jupiter:</strong> Planet terbesar, badai besar</li>
-                    <li><strong>Saturnus:</strong> Memiliki cincin indah</li>
-                    <li><strong>Uranus:</strong> Berotasi miring 98°</li>
-                    <li><strong>Neptunus:</strong> Planet terjauh, angin kencang</li>
-                    <li>Raksasa gas dengan banyak satelit</li>
+                    <li>Hukum Gravitasi Newton: F = G(m₁m₂)/r²</li>
+                    <li>Orbit elips dengan eksentrisitas (e) bervariasi</li>
+                    <li>Perihelion precession (relativistik dan Newtonian)</li>
+                    <li>Resonansi orbital: 2:1, 3:2, dll</li>
+                    <li>Perturbasi gravitasi antar planet</li>
+                    <li>Stabilitas jangka panjang (~4,6 miliar tahun)</li>
                 </ul>
+                <div class="equation">
+                    T = 2π√(a³/GM☉)<br>
+                    (Periode orbit Keplerian)
+                </div>
             </div>
 
             <div class="info-card">
-                <h3>☄️ Objek Lainnya</h3>
+                <h3>📏 Parameter Astronomi Fundamental</h3>
                 <ul>
-                    <li><strong>Sabuk Asteroid:</strong> Antara Mars-Jupiter</li>
-                    <li><strong>Satelit:</strong> Bulan mengelilingi planet</li>
-                    <li><strong>Komet:</strong> Bongkahan es dari tepi tata surya</li>
-                    <li><strong>Meteoroid:</strong> Batuan kecil di ruang angkasa</li>
-                    <li><strong>Sabuk Kuiper:</strong> Di luar orbit Neptunus</li>
+                    <li>Unit Astronomi (AU) = 149.597.870,7 km</li>
+                    <li>Massa Matahari (M☉) = 1,9884 × 10³⁰ kg</li>
+                    <li>Massa Bumi (M⊕) = 5,9722 × 10²⁴ kg</li>
+                    <li>Jari-jari Bumi (R⊕) = 6.371 km</li>
+                    <li>Konstanta Gravitasi (G) = 6,67430 × 10⁻¹¹ m³kg⁻¹s⁻²</li>
+                    <li>Paralaks tahunan = 1 AU/basis garis pandang</li>
                 </ul>
+                <div class="equation">
+                    d(pc) = 1/p(\"arc\")<br>
+                    (Jarak paralaks)
+                </div>
             </div>
-
-            <div class="info-card">
-                <h3>⚖️ Gaya Gravitasi</h3>
-                <ul>
-                    <li>Matahari menarik semua objek</li>
-                    <li>Planet bergerak dalam orbit elips</li>
-                    <li>Kecepatan orbit berbeda-beda</li>
-                    <li>Planet dalam bergerak lebih cepat</li>
-                    <li>Menjaga keseimbangan tata surya</li>
-                </ul>
-            </div>
-
-            <div class="info-card">
-                <h3>📏 Fakta Menarik</h3>
-                <ul>
-                    <li>Jarak Bumi-Matahari: 150 juta km</li>
-                    <li>1 tahun Merkurius = 88 hari Bumi</li>
-                    <li>1 tahun Neptunus = 165 tahun Bumi</li>
-                    <li>Saturnus bisa mengapung di air</li>
-                    <li>Jupiter melindungi Bumi dari asteroid</li>
-                </ul>
-            </div>
+        </div>
+        
+        <div class="info-card" style="margin-top: 30px;">
+            <h3>📚 Teori Pembentukan Tata Surya (Nebular Hypothesis)</h3>
+            <ul>
+                <li><strong>Langkah 1:</strong> Kolaps awan molekuler (4,6 miliar tahun lalu)</li>
+                <li><strong>Langkah 2:</strong> Pembentukan nebula protoplanet</li>
+                <li><strong>Langkah 3:</strong> Akresi dan diferensiasi planetesimal</li>
+                <li><strong>Langkah 4:</strong> Pembentukan planet dan satelit</li>
+                <li><strong>Langkah 5:</strong> Evolusi dan clearing orbit</li>
+                <li><strong>Bukti:</strong> Coplanarity, prograde motion, age dating meteorites</li>
+            </ul>
         </div>
     </div>
 </body>

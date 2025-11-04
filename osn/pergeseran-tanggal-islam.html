@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pergeseran Tanggal Islam dalam Kalender Masehi</title>
+    <title>Pergeseran Tanggal Islam dalam Kalender Masehi - Olimpiade Astronomi</title>
     <style>
         * {
             margin: 0;
@@ -289,6 +289,20 @@
             color: #00bcd4;
         }
 
+        .olympiad-level {
+            color: #ff5722;
+            font-weight: bold;
+        }
+
+        .equation {
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
         footer {
             text-align: center;
             margin-top: 40px;
@@ -301,10 +315,11 @@
 <body>
     <div class="container">
         <h1>⏳ Pergeseran Tanggal 1 Syawal dan 1 Muharram dalam Kalender Masehi</h1>
+        <p style="text-align: center; margin-bottom: 20px;"><span class="olympiad-level">Tingkat Olimpiade Sains Nasional - Astronomi</span></p>
         
         <div class="intro-section">
             <div class="definition">
-                Tanggal 1 Syawal (Idul Fitri) dan 1 Muharram (Tahun Baru Islam) selalu bergeser mundur sekitar 10-11 hari setiap tahun ketika dilihat dalam kalender Masehi. Fenomena ini disebabkan oleh perbedaan panjang tahun antara kalender Hijriah dan Masehi.
+                Tanggal 1 Syawal (Idul Fitri) dan 1 Muharram (Tahun Baru Islam) selalu bergeser mundur sekitar 10,8754 hari setiap tahun ketika dilihat dalam kalender Masehi. Fenomena ini disebabkan oleh perbedaan panjang tahun antara kalender Hijriah (Lunar) dan Masehi (Solar) berdasarkan prinsip astronomi gerak relatif benda langit.
             </div>
         </div>
         
@@ -312,43 +327,52 @@
             <div class="explanation-card">
                 <div class="card-title">
                     <div class="icon">📅</div>
-                    <h2>Panjang Tahun Berbeda</h2>
+                    <h2>Panjang Tahun Astronomis</h2>
                 </div>
                 <div class="details">
-                    <p><strong>Kalender Masehi:</strong> 365 atau 366 hari (tahun kabisat)</p>
-                    <p><strong>Kalender Hijriah:</strong> 354 atau 355 hari</p>
-                    <p><strong>Selisih:</strong> Sekitar 11 hari per tahun</p>
+                    <p><strong>Kalender Masehi (Gregorian):</strong> 365,2425 hari (rata-rata)</p>
+                    <p><strong>Kalender Hijriah (Lunar):</strong> 354,3671 hari (rata-rata)</p>
+                    <p><strong>Selisih Astronomis:</strong> ΔT = 10,8754 hari/tahun</p>
                 </div>
-                <h3>Dampak:</h3>
-                <p>Setiap tahun, tanggal Islam dalam kalender Masehi mundur sekitar 11 hari karena tahun Hijriah lebih pendek.</p>
+                <h3>Dasar Perhitungan:</h3>
+                <p>Perbedaan ini berasal dari perbedaan periode orbital: Bumi mengelilingi Matahari dalam 365,242190419 hari (Tropical Year), sedangkan Bulan mengelilingi Bumi dalam 29,530588853 hari (Synodic Month).</p>
+                <div class="equation">
+                    T_Lunar = 12 × 29,530588853 = 354,367065 hari
+                </div>
             </div>
             
             <div class="explanation-card">
                 <div class="card-title">
                     <div class="icon">🌕</div>
-                    <h2>Dasar Perhitungan</h2>
+                    <h2>Dasar Perhitungan Astronomis</h2>
                 </div>
                 <div class="details">
-                    <p><strong>Kalender Masehi:</strong> Berdasarkan revolusi Bumi mengelilingi Matahari</p>
-                    <p><strong>Kalender Hijriah:</strong> Berdasarkan revolusi Bulan mengelilingi Bumi</p>
+                    <p><strong>Kalender Masehi:</strong> Berdasarkan revolusi Bumi-Matahari (Tropical Year)</p>
+                    <p><strong>Kalender Hijriah:</strong> Berdasarkan revolusi Bulan-Bumi (Synodic Month)</p>
+                    <p><strong>Accuracy:</strong> Gregorian: 1 hari/3300 tahun</p>
                 </div>
-                <h3>Konsekuensi:</h3>
-                <p>Karena dasar perhitungan berbeda, kedua kalender tidak sinkron dan menghasilkan pergeseran tanggal setiap tahun.</p>
+                <h3>Parametrizasi Astronomis:</h3>
+                <p>Konjungsi astronomis (new moon) sebagai penentu awal bulan dengan kriteria hilal terbenam setelah matahari dengan ketinggian minimal -4°.</p>
+                <div class="equation">
+                    Conjunction: λ☉ = λ☾<br>
+                    Visibility: h_moon > -4° at sunset
+                </div>
             </div>
         </div>
         
         <div class="calculation-section">
             <div class="calculation-title">
                 <div class="icon">🧮</div>
-                <h2>Perhitungan Pergeseran</h2>
+                <h2>Perhitungan Pergeseran Astronomis</h2>
             </div>
             
             <div class="formula">
-                365.25 hari (Masehi) - 354.36 hari (Hijriah) = 10.89 hari ≈ 11 hari
+                ΔT = T_Gregorian - T_Lunar<br>
+                ΔT = 365,2425 - 354,3671 = 10,8754 hari/tahun
             </div>
             
             <p style="text-align: center; margin: 20px 0;">
-                Setiap tahun, kalender Hijriah "kehilangan" sekitar 11 hari dibandingkan kalender Masehi.
+                Setiap tahun, kalender Hijriah "kehilangan" sekitar 10,8754 hari dibandingkan kalender Masehi.
             </p>
             
             <div class="shift-visualization">
@@ -358,6 +382,9 @@
                     <div class="date-display" style="color: #ff5722; font-weight: bold;">22 April</div>
                     <div class="date-display">Tahun Baru Islam:</div>
                     <div class="date-display" style="color: #00bcd4; font-weight: bold;">20 Juli</div>
+                    <div class="equation" style="font-size: 0.8rem; margin-top: 10px;">
+                        JD = 2460057,5
+                    </div>
                 </div>
                 
                 <div class="shift-indicator">
@@ -370,6 +397,9 @@
                     <div class="date-display" style="color: #ff5722; font-weight: bold;">10 April</div>
                     <div class="date-display">Tahun Baru Islam:</div>
                     <div class="date-display" style="color: #00bcd4; font-weight: bold;">7 Juli</div>
+                    <div class="equation" style="font-size: 0.8rem; margin-top: 10px;">
+                        JD = 2460046,5
+                    </div>
                 </div>
                 
                 <div class="shift-indicator">
@@ -382,6 +412,9 @@
                     <div class="date-display" style="color: #ff5722; font-weight: bold;">30 Maret</div>
                     <div class="date-display">Tahun Baru Islam:</div>
                     <div class="date-display" style="color: #00bcd4; font-weight: bold;">26 Juni</div>
+                    <div class="equation" style="font-size: 0.8rem; margin-top: 10px;">
+                        JD = 2460035,5
+                    </div>
                 </div>
             </div>
         </div>
@@ -389,20 +422,29 @@
         <div class="reasons-grid">
             <div class="reason-card">
                 <div class="reason-icon">🔁</div>
-                <h3>Siklus 33 Tahun</h3>
-                <p>Dalam sekitar 33 tahun, tanggal Islam akan kembali ke posisi semula dalam kalender Masehi karena akumulasi pergeseran 11 hari per tahun.</p>
+                <h3>Siklus Drift Kalender</h3>
+                <p>Dalam siklus 32,6 tahun (1/ΔT), tanggal Islam akan kembali ke posisi semula dalam kalender Masehi karena akumulasi pergeseran 10,8754 hari per tahun.</p>
+                <div class="equation">
+                    T_cycle = 1/ΔT = 1/10,8754 ≈ 32,6 tahun
+                </div>
             </div>
             
             <div class="reason-card">
                 <div class="reason-icon">🌡️</div>
-                <h3>Perubahan Musim</h3>
-                <p>Karena pergeseran tanggal, hari besar Islam akan mengalami semua musim dalam siklus 33 tahun, memberikan pengalaman spiritual yang berbeda.</p>
+                <h3>Perubahan Musim Astronomis</h3>
+                <p>Karena pergeseran tanggal, hari besar Islam akan mengalami semua musim dalam siklus 32,6 tahun, memberikan pengalaman spiritual yang berbeda berdasarkan posisi Bumi dalam orbitnya.</p>
+                <div class="equation">
+                    Seasonal Phase = (JD mod T_tropical) × 4/T_tropical
+                </div>
             </div>
             
             <div class="reason-card">
                 <div class="reason-icon">🌙</div>
-                <h3>Penentuan Hilal</h3>
-                <p>Awal bulan Hijriah ditentukan oleh pengamatan hilal, bukan perhitungan tetap, sehingga bisa ada variasi 1 hari antar negara.</p>
+                <h3>Penentuan Hilal Astronomis</h3>
+                <p>Awal bulan Hijriah ditentukan oleh konjungsi astronomis dengan kriteria visibilitas hilal berdasarkan horizon lokal dan kondisi atmosferik.</p>
+                <div class="equation">
+                    Visibility = f(h_moon, h_sun, ΔT_visibility)
+                </div>
             </div>
         </div>
         
@@ -447,24 +489,63 @@
             <div class="implication-card">
                 <div class="implication-icon">🌾</div>
                 <h3>Penanggalan Pertanian</h3>
-                <p>Umat Islam tidak dapat menggunakan kalender Hijriah untuk menentukan musim tanam karena tidak sesuai dengan siklus musim.</p>
+                <p>Umat Islam tidak dapat menggunakan kalender Hijriah untuk menentukan musim tanam karena tidak sesuai dengan siklus musim tropis Bumi.</p>
+                <div class="equation">
+                    Agricultural Cycle ≠ Religious Calendar
+                </div>
             </div>
             
             <div class="implication-card">
                 <div class="implication-icon">🎓</div>
                 <h3>Pendidikan dan Kerja</h3>
-                <p>Hari besar Islam jatuh pada tanggal berbeda setiap tahun dalam kalender resmi negara, memerlukan penyesuaian.</p>
+                <p>Hari besar Islam jatuh pada tanggal berbeda setiap tahun dalam kalender Gregorian, memerlukan penyesuaian sistem pendidikan dan ketenagakerjaan.</p>
+                <div class="equation">
+                    ΔDate_annual = 10,8754 hari
+                </div>
             </div>
             
             <div class="implication-card">
                 <div class="implication-icon">🌏</div>
-                <h3>Globalisasi</h3>
-                <p>Perbedaan tanggal memengaruhi koordinasi aktivitas umat Islam di seluruh duni dalam konteks internasional.</p>
+                <h3>Globalisasi Astronomis</h3>
+                <p>Perbedaan tanggal memengaruhi koordinasi aktivitas umat Islam secara global berdasarkan horizon astronomis lokal.</p>
+                <div class="equation">
+                    Δt_visibility = (h₁ - h₂)/(15°/jam cos φ)
+                </div>
+            </div>
+        </div>
+        
+        <div class="intro-section">
+            <h3>Model Prediktif Kalender</h3>
+            <div class="equation">
+                JD_H = JD_0 + 354,3671 × (y - y_0) + 29,530588853 × m + d<br>
+                (Julian Day untuk tanggal Hijriah)
+            </div>
+            <div class="equation">
+                ΔJD = 10,8754 × (y - y_ref)<br>
+                (Pergeseran Julian Day tahunan)
+            </div>
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+                <div style="flex: 1; min-width: 250px; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px;">
+                    <h4>Konversi Kalender</h4>
+                    <div class="equation">
+                        y_H = (JD - 1948439,5)/354,3671<br>
+                        m_H = ((JD - 1948439,5) mod 354,3671)/29,5306<br>
+                        d_H = (((JD - 1948439,5) mod 354,3671) mod 29,5306)
+                    </div>
+                </div>
+                <div style="flex: 1; min-width: 250px; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px;">
+                    <h4>Akurasi Jangka Panjang</h4>
+                    <div class="equation">
+                        Drift_30y = 30 × 10,8754 = 326,26 hari<br>
+                        Drift_Cycle = 32,6 × 10,8754 = 354,37 hari ≈ 1 tahun lunar
+                    </div>
+                </div>
             </div>
         </div>
         
         <footer>
-            <p>Pergeseran tanggal 1 Syawal dan 1 Muharram dalam kalender Masehi adalah konsekuensi alami dari perbedaan dasar perhitungan kedua kalender. Kalender Hijriah berbasis revolusi Bulan (354 hari), sedangkan kalender Masehi berbasis revolusi Bumi (365 hari). Selisih sekitar 11 hari per tahun menyebabkan fenomena ini, yang dalam siklus 33 tahun akan membuat tanggal kembali ke posisi semula.</p>
+            <p>Pergeseran tanggal 1 Syawal dan 1 Muharram dalam kalender Masehi adalah konsekuensi alami dari perbedaan dasar perhitungan astronomis kedua kalender. Kalender Hijriah berbasis revolusi Bulan mengelilingi Bumi (354,3671 hari), sedangkan kalender Masehi berbasis revolusi Bumi mengelilingi Matahari (365,2425 hari). Selisih sekitar 10,8754 hari per tahun menyebabkan fenomena ini, yang dalam siklus 32,6 tahun akan membuat tanggal kembali ke posisi semula. Dalam konteks astronomi, pergeseran ini mencerminkan perbedaan periode orbital benda langit dan mempengaruhi pengalaman musiman hari besar Islam secara global.</p>
         </footer>
     </div>
 </body>

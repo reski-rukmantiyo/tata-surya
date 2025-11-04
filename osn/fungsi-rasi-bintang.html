@@ -2,8 +2,8 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport"content="width=device-width, initial-scale=1.0">
-    <title>Fungsi Rasi Bintang bagi Peradaban Kuno</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fungsi Rasi Bintang bagi Peradaban Kuno - Olimpiade Astronomi</title>
     <style>
         * {
             margin: 0;
@@ -220,6 +220,20 @@
             color: #ffd700;
         }
 
+        .olympiad-level {
+            color: #ff5722;
+            font-weight: bold;
+        }
+
+        .equation {
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
         footer {
             text-align: center;
             margin-top: 40px;
@@ -232,10 +246,11 @@
 <body>
     <div class="container">
         <h1>🧭 3 Fungsi Utama Rasi Bintang bagi Peradaban Kuno</h1>
+        <p style="text-align: center; margin-bottom: 20px;"><span class="olympiad-level">Tingkat Olimpiade Sains Nasional - Astronomi</span></p>
         
         <div class="intro-section">
             <div class="definition">
-                Sejak zaman prasejarah, manusia telah mengamati dan memberi nama pada kelompok bintang di langit. Rasi bintang memiliki peran penting dalam kehidupan peradaban kuno sebagai panduan, penanggalan, dan inspirasi budaya.
+                Sejak zaman prasejarah, manusia telah mengamati dan memberi nama pada kelompok bintang di langit. Rasi bintang memiliki peran penting dalam kehidupan peradaban kuno sebagai panduan navigasi, penanggalan astronomis, dan sistem referensi koordinat langit.
             </div>
         </div>
         
@@ -257,105 +272,118 @@
                     <div class="dipper-line line-6"></div>
                 </div>
             </div>
-            <div style="position: absolute; top: 10px; left: 10px; color: #ffd700;">Rasi Biduk (Big Dipper)</div>
+            <div style="position: absolute; top: 10px; left: 10px; color: #ffd700;">Rasi Ursa Major (Biduk)</div>
         </div>
         
         <div class="functions-container">
             <div class="function-card navigation">
                 <div class="card-title">
                     <div class="icon">⛵</div>
-                    <h2>Navigasi dan Orientasi</h2>
+                    <h2>Navigasi Astronomis & Penentuan Posisi</h2>
                 </div>
                 <div class="details">
-                    <p>Rasi bintang digunakan sebagai panduan navigasi di darat dan laut. Pelaut kuno menggunakan posisi rasi untuk menentukan arah dan lokasi mereka.</p>
+                    <p>Rasi bintang digunakan sebagai sistem referensi untuk navigasi presisi di darat dan laut. Pelaut kuno menggunakan posisi rasi untuk menentukan arah, lintang, dan bujur mereka dengan akurasi tinggi.</p>
                 </div>
-                <h3>Penerapan:</h3>
+                <h3>Prinsip Navigasi:</h3>
                 <ul style="margin: 15px 0; padding-left: 20px;">
-                    <li>Menentukan arah utara melalui Biduk dan Polaris</li>
-                    <li>Menavigasi samudra luas tanpa alat modern</li>
-                    <li>Orientasi di gurun dan wilayah tandus</li>
-                    <li>Menentukan lintang dan bujur relatif</li>
+                    <li>Menentukan arah utara melalui Ursa Major → Polaris (bintang utara)</li>
+                    <li>Lintang astronomis: δ = 90° - z + α (z = zenith distance)</li>
+                    <li>Navigasi celstial dengan sextant dan almanak nautika</li>
+                    <li>Dead reckoning berbasis posisi bintang</li>
                 </ul>
+                <div class="equation">
+                    sin(h) = sin(φ)sin(δ) + cos(φ)cos(δ)cos(H)<br>
+                    (Rumus tinggi bintang untuk navigasi)
+                </div>
             </div>
             
             <div class="function-card calendar">
                 <div class="card-title">
                     <div class="icon">📅</div>
-                    <h2>Penanggalan dan Kalender</h2>
+                    <h2>Penanggalan Astronomis & Kalender</h2>
                 </div>
                 <div class="details">
-                    <p>Rasi bintang membantu peradaban kuno menentukan musim, waktu tanam, dan waktu panen. Pergerakan rasi sepanjang tahun menjadi dasar kalender pertanian.</p>
+                    <p>Rasi bintang membantu peradaban kuno menentukan musim, waktu tanam, dan waktu panen. Pergerakan rasi sepanjang tahun menjadi dasar kalender astronomis yang akurat.</p>
                 </div>
-                <h3>Penerapan:</h3>
+                <h3>Sistem Kalender:</h3>
                 <ul style="margin: 15px 0; padding-left: 20px;">
-                    <li>Menentukan awal musim semi dan gugur</li>
-                    <li>Menandai waktu tanam dan panen</li>
-                    <li>Membuat kalender pertanian yang akurat</li>
-                    <li>Menentukan waktu ritual dan perayaan</li>
+                    <li>Kalender solar: Berdasarkan revolusi bumi (365,2422 hari)</li>
+                    <li>Kalender lunar: Berdasarkan siklus bulan (29,53059 hari)</li>
+                    <li>Kalender lunisolar: Kombinasi keduanya dengan interkalasi</li>
+                    <li>Equinox dan solstice sebagai titik referensi</li>
                 </ul>
+                <div class="equation">
+                    T = 2π√(a³/GM☉) = 365,256 hari<br>
+                    (Periode orbit bumi - dasar kalender solar)
+                </div>
             </div>
             
             <div class="function-card cultural">
                 <div class="card-title">
                     <div class="icon">🏛️</div>
-                    <h2>Inspirasi Budaya dan Mitologi</h2>
+                    <h2>Sistem Koordinat & Referensi Astronomi</h2>
                 </div>
                 <div class="details">
-                    <p>Rasi bintang menjadi sumber inspirasi untuk mitos, legenda, dan cerita rakyat. Setiap budaya memiliki versi unik tentang makna dan kisah di balik rasi bintang.</p>
+                    <p>Rasi bintang menjadi sistem referensi untuk mengidentifikasi dan mengkatalogkan objek langit. Setiap budaya mengembangkan sistem koordinat berbasis rasi bintang untuk observasi astronomi.</p>
                 </div>
-                <h3>Penerapan:</h3>
+                <h3>Sistem Referensi:</h3>
                 <ul style="margin: 15px 0; padding-left: 20px;">
-                    <li>Menceritakan kisah dewa-dewi dan pahlawan</li>
-                    <li>Menjaga tradisi lisan dari generasi ke generasi</li>
-                    <li>Menghubungkan astronomi dengan spiritualitas</li>
-                    <li>Membentuk identitas budaya suatu bangsa</li>
+                    <li>Katalog bintang Hipparcos dan Tycho (ESA)</li>
+                    <li>Sistem koordinat equatorial: RA (α) dan Dec (δ)</li>
+                    <li>Epoch J2000.0 sebagai standar referensi</li>
+                    <li>Transformasi koordinat antar sistem</li>
                 </ul>
+                <div class="equation">
+                    α(t) = α₀ + μₐ(t - t₀)<br>
+                    δ(t) = δ₀ + μδ(t - t₀)<br>
+                    (Gerak sejati bintang dalam katalog)
+                </div>
             </div>
         </div>
         
         <div class="navigation-tools">
             <div class="tool">
                 <div class="tool-icon">🧭</div>
-                <h3>Kompas Langit</h3>
-                <p>Rasi Biduk menunjuk ke arah Polaris (Bintang Utara) yang selalu berada di utara</p>
+                <h3>Astrometri Langit</h3>
+                <p>Ursa Major → Polaris untuk menentukan azimuth dan altitude</p>
             </div>
             
             <div class="tool">
                 <div class="tool-icon">🌾</div>
-                <h3>Kalender Pertanian</h3>
-                <p>Kemunculan rasi tertentu menandakan waktu tanam atau panen</p>
+                <h3>Kalender Astronomis</h3>
+                <p>Heliacal rising rasi menandakan musim tanam/panen</p>
             </div>
             
             <div class="tool">
                 <div class="tool-icon">📜</div>
-                <h3>Cerita Langit</h3>
-                <p>Setiap rasi memiliki kisah yang diturunkan secara lisan</p>
+                <h3>Katalog Bintang</h3>
+                <p>Sistem referensi untuk identifikasi objek langit</p>
             </div>
         </div>
         
         <div class="civilizations">
             <div class="civilization-card">
                 <div class="civilization-icon">🏛️</div>
-                <h3>Peradaban Mesir</h3>
-                <p>Menggunakan rasi Orion untuk menentukan waktu banjir Nil</p>
+                <h3>Peradaban Mesir Kuno</h3>
+                <p>Observatorium Abu Simbel: heliacal rising Sirius (Sothis) menandai banjir Nil<br>Periode Sothic: 1461 tahun</p>
             </div>
             
             <div class="civilization-card">
                 <div class="civilization-icon">⛵</div>
-                <h3>Pelaut Polinesia</h3>
-                <p>Menguasai seni navigasi berbasis rasi bintang untuk menyeberangi Samudra Pasifik</p>
+                <h3>Navigasi Polinesia</h3>
+                <p>Sistem wayfinding berbasis rasi bintang: "Star compass"<br>Ekspansi ke Hawai, Selandia Baru, Rapa Nui</p>
             </div>
             
             <div class="civilization-card">
                 <div class="civilization-icon">🏯</div>
-                <h3>Peradaban China</h3>
-                <p>Mengembangkan sistem kalender berbasis rasi bintang sejak 3000 SM</p>
+                <h3>Astronomi China Kuno</h3>
+                <p>Katalog bintang Shi Shen (4 abad SM)<br>Sistem 28 mansion (Xiu) sepanjang ekliptika</p>
             </div>
             
             <div class="civilization-card">
                 <div class="civilization-icon">🏛️</div>
                 <h3>Peradaban Maya</h3>
-                <p>Membangun observatorium astronomi untuk mempelajari pergerakan rasi</p>
+                <p>Kalender Haab' (365 hari) dan Tzolk'in (260 hari)<br>Observatorium Caracol di Chichen Itza</p>
             </div>
         </div>
         
@@ -363,30 +391,42 @@
             <div class="example-card">
                 <div class="example-title">
                     <div class="icon">⚓</div>
-                    <h3>Navigasi Maritim</h3>
+                    <h3>Navigasi Maritim Presisi</h3>
                 </div>
-                <p>Pelaut Yunani kuno menggunakan rasi Ursa Major (Biduk) untuk menavigasi Mediterania. Di belahan bumi selatan, mereka menggunakan rasi Southern Cross.</p>
+                <p>Pelaut Arab menggunakan rasi Ursa Minor untuk navigasi lintang. Di belahan bumi selatan, mereka menggunakan rasi Crux (Southern Cross) dengan magnitude -0,8 untuk menentukan arah selatan.</p>
+                <div class="equation">
+                    φ = 90° - h + δ<br>
+                    (Menentukan lintang dari tinggi bintang)
+                </div>
             </div>
             
             <div class="example-card">
                 <div class="example-title">
                     <div class="icon">🌾</div>
-                    <h3>Kalender Pertanian</h3>
+                    <h3>Kalender Pertanian Astronomis</h3>
                 </div>
-                <p>Petani Romawi kuno mengetahui waktu menanam anggur dengan kemunculan rasi Virgo di ufuk timur pada musim semi.</p>
+                <p>Petani Romawi kuno menggunakan heliacal rising rasi Leo (magnitude 1,4) untuk menandai awal musim panas. Heliacal rising: saat bintang pertama kali terlihat sebelum matahari terbit.</p>
+                <div class="equation">
+                    H = arccos(-(tan φ)(tan δ))<br>
+                    (Waktu kulminasi atas/bawah)
+                </div>
             </div>
             
             <div class="example-card">
                 <div class="example-title">
                     <div class="icon">🎭</div>
-                    <h3>Mitos dan Legenda</h3>
+                    <h3>Katalog Bintang Historis</h3>
                 </div>
-                <p>Rasi Orion dalam mitologi Yunani menceritakan kisah pemburu hebat yang diabadikan di langit oleh Zeus.</p>
+                <p>Katalog Almagest Claudius Ptolemy (150 M) berisi 1022 bintang dengan magnitudo visual dan posisi equatorial. Magnitudo semu: m₁ - m₂ = -2,5 log(F₁/F₂)</p>
+                <div class="equation">
+                    m - M = 5 log(d) - 5<br>
+                    (Modulus jarak untuk penentuan jarak bintang)
+                </div>
             </div>
         </div>
         
         <footer>
-            <p>Rasi bintang merupakan warisan budaya yang tak ternilai dari peradaban kuno. Ketiga fungsinya - navigasi, penanggalan, dan inspirasi budaya - menunjukkan betapa pentingnya astronomi dalam kehidupan manusia sejak zaman dahulu.</p>
+            <p>Rasi bintang merupakan warisan ilmiah dan budaya yang tak ternilai dari peradaban kuno. Ketiga fungsinya - navigasi presisi, penanggalan astronomis, dan sistem referensi koordinat - menjadi dasar perkembangan astronomi modern dan masih digunakan dalam navigasi maritim hingga saat ini.</p>
         </footer>
     </div>
 </body>

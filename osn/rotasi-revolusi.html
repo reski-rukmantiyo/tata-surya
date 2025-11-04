@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Perbedaan Gerak Rotasi dan Revolusi Bumi</title>
+    <title>Gerak Rotasi dan Revolusi Bumi - Olimpiade Astronomi</title>
     <style>
         * {
             margin: 0;
@@ -198,6 +198,20 @@
             font-weight: bold;
         }
 
+        .equation {
+            text-align: center;
+            font-family: 'Courier New', monospace;
+            background: rgba(0, 0, 0, 0.3);
+            padding: 10px;
+            border-radius: 8px;
+            margin: 10px 0;
+        }
+
+        .olympiad-level {
+            color: #ff5722;
+            font-weight: bold;
+        }
+
         footer {
             text-align: center;
             margin-top: 40px;
@@ -209,7 +223,8 @@
 </head>
 <body>
     <div class="container">
-        <h1>🌍 Perbedaan Gerak Rotasi dan Revolusi Bumi</h1>
+        <h1>🌍 Gerak Rotasi dan Revolusi Bumi</h1>
+        <p style="text-align: center; margin-bottom: 20px;"><span class="olympiad-level">Tingkat Olimpiade Sains Nasional - Astronomi</span></p>
         
         <div class="comparison-container">
             <div class="card rotasi">
@@ -218,28 +233,35 @@
                     <h2>Rotasi Bumi</h2>
                 </div>
                 <div class="definition">
-                    Rotasi adalah perputaran bumi pada porosnya dari barat ke timur.
+                    Rotasi adalah perputaran bumi pada porosnya dari barat ke timur dengan periode siderial 23j 56m 4s.
                 </div>
-                <p>arah: Barat → Timur</p>
-                <p>waktu: 23 jam 56 menit 4 detik (1 hari)</p>
-                <p>poros: Poros bumi (sumbu utara-selatan)</p>
+                <p><strong>Arah:</strong> Barat → Timur (prograde)</p>
+                <p><strong>Periode Siderial:</strong> 86.164,0905 detik (23j 56m 4,0905s)</p>
+                <p><strong>Periode Solar Mean:</strong> 86.400 detik (24j 00m 00s)</p>
+                <p><strong>Poros:</strong> Poros bumi (sumbu utara-selatan) dengan inklinasi 23,44°</p>
+                <p><strong>Kecepatan sudut:</strong> 7,2921159 × 10⁻⁵ rad/s</p>
                 
                 <h3>Dampak Rotasi:</h3>
                 <div class="impact-grid">
                     <div class="impact-item">
                         <div class="impact-icon">🌅</div>
                         <h4>Perbedaan Waktu</h4>
-                        <p>Terjadinya siang dan malam</p>
+                        <p>Terjadinya siang dan malam dengan durasi ~12 jam</p>
                     </div>
                     <div class="impact-item">
                         <div class="impact-icon">🌀</div>
-                        <h4>Gerak Semu Harian</h4>
-                        <p>Matahari terbit di timur, tenggelam di barat</p>
+                        <h4>Efek Coriolis</h4>
+                        <p>Pembelokan arah angin dan arus laut di hemisfer</p>
                     </div>
                     <div class="impact-item">
-                        <div class="impact-icon">🌊</div>
-                        <h4>Pembelokan Angin/Laut</h4>
-                        <p>Gerak semu matahari menyebabkan pembelokan arah angin dan arus laut</p>
+                        <div class="impact-icon">⚖️</div>
+                        <h4>Pepat Bumi</h4>
+                        <p>Bentuk oblate spheroid dengan peplat 1/298,257</p>
+                    </div>
+                    <div class="impact-item">
+                        <div class="impact-icon">🔭</div>
+                        <h4>Gerak Semu Harian</h4>
+                        <p>Matahari, bulan, dan bintang bergerak dari timur ke barat</p>
                     </div>
                 </div>
             </div>
@@ -250,33 +272,35 @@
                     <h2>Revolusi Bumi</h2>
                 </div>
                 <div class="definition">
-                    Revolusi adalah perputaran bumi mengelilingi matahari dalam orbit elips.
+                    Revolusi adalah perputaran bumi mengelilingi matahari dalam orbit elips dengan periode 365,256 hari.
                 </div>
-                <p>arah: Barat → Timur</p>
-                <p>waktu: 365¼ hari (1 tahun)</p>
-                <p>orbit: Elips mengelilingi matahari</p>
+                <p><strong>Arah:</strong> Barat → Timur (prograde)</p>
+                <p><strong>Periode Siderial:</strong> 365,256363004 hari (1 tahun)</p>
+                <p><strong>Periode Tropical:</strong> 365,242190419 hari</p>
+                <p><strong>Orbit:</strong> Elips dengan eksentrisitas e=0,0167</p>
+                <p><strong>Jarak rata-rata:</strong> 1 AU = 149.597.870,7 km</p>
                 
                 <h3>Dampak Revolusi:</h3>
                 <div class="impact-grid">
                     <div class="impact-item">
                         <div class="impact-icon">🌙</div>
                         <h4>Perubahan Musim</h4>
-                        <p>Empat musim akibat kemiringan sumbu bumi 23½°</p>
+                        <p>Empat musim akibat kemiringan sumbu bumi ε=23,44°</p>
                     </div>
                     <div class="impact-item">
                         <div class="impact-icon">📅</div>
-                        <h4>Tahun Masehi</h4>
-                        <p>Dasar penanggalan kalender masehi</p>
+                        <h4>Kalender Gregorian</h4>
+                        <p>Dasar penanggalan dengan tahun kabisat setiap 4 tahun</p>
                     </div>
                     <div class="impact-item">
                         <div class="impact-icon">🌓</div>
-                        <h4>Gerak Semu Tahunan</h4>
-                        <p>Perubahan posisi matahari sepanjang tahun</p>
+                        <h4>Variasi Deklinasi</h4>
+                        <p>Perubahan deklinasi matahari ±23,44° sepanjang tahun</p>
                     </div>
                     <div class="impact-item">
                         <div class="impact-icon">📏</div>
-                        <h4>Perbedaan Lamanya Siang/Malam</h4>
-                        <p>Durasi siang dan malam berubah sepanjang tahun</p>
+                        <h4>Variasi Durasi Siang/Malam</h4>
+                        <p>Durasi harian berubah sesuai lintang dan musim</p>
                     </div>
                 </div>
             </div>
@@ -299,7 +323,7 @@
         <table class="difference-table">
             <thead>
                 <tr>
-                    <th>Aspek</th>
+                    <th>Parameter</th>
                     <th>Rotasi</th>
                     <th>Revolusi</th>
                 </tr>
@@ -307,34 +331,52 @@
             <tbody>
                 <tr>
                     <td class="highlight">Definisi</td>
-                    <td>Berputar pada porosnya</td>
-                    <td>Mengelilingi matahari</td>
+                    <td>Berputar pada poros internal</td>
+                    <td>Mengelilingi pusat massa eksternal</td>
                 </tr>
                 <tr>
-                    <td class="highlight">Waktu</td>
-                    <td>1 hari (24 jam)</td>
-                    <td>1 tahun (365¼ hari)</td>
+                    <td class="highlight">Periode Siderial</td>
+                    <td>0,9972696 hari</td>
+                    <td>365,256363004 hari</td>
                 </tr>
                 <tr>
-                    <td class="highlight">Arah</td>
-                    <td>Barat ke timur</td>
-                    <td>Barat ke timur</td>
+                    <td class="highlight">Kecepatan Linear Ekuator</td>
+                    <td>465,1 m/s</td>
+                    <td>29,78 km/s</td>
                 </tr>
                 <tr>
-                    <td class="highlight">Akibat</td>
-                    <td>Siang dan malam</td>
-                    <td>Perubahan musim</td>
+                    <td class="highlight">Akibat Utama</td>
+                    <td>Siang/malam, efek Coriolis</td>
+                    <td>Musim, variasi iklim</td>
                 </tr>
                 <tr>
                     <td class="highlight">Poros/Orbit</td>
-                    <td>Poros bumi</td>
-                    <td>Orbit elips</td>
+                    <td>Poros bumi (sumbu rotasi)</td>
+                    <td>Orbit elips mengelilingi matahari</td>
                 </tr>
             </tbody>
         </table>
         
+        <div class="card" style="margin-top: 30px; background: rgba(0, 0, 0, 0.3);">
+            <h3>📚 Konsep Lanjutan: Precesi dan Nutasi</h3>
+            <ul>
+                <li><strong>Precesi:</strong> Gerak konikal poros bumi dengan periode ~25.772 tahun</li>
+                <li><strong>Nutasi:</strong> Osilasi kecil poros bumi dengan periode ~18,6 tahun</li>
+                <li><strong>Aberrasi Tahunan:</strong> Efek relativistik karena gerak bumi mengelilingi matahari</li>
+                <li><strong>Paralaks Tahunan:</strong> Perubahan posisi bintang akibat gerak bumi</li>
+            </ul>
+            <div class="equation">
+                ω = 2π/T = 7,2921159 × 10⁻⁵ rad/s<br>
+                (Kecepatan sudut rotasi bumi)
+            </div>
+            <div class="equation">
+                v = ωR cos φ<br>
+                (Kecepatan linear rotasi di lintang φ)
+            </div>
+        </div>
+        
         <footer>
-            <p>Infografik ini menjelaskan perbedaan antara gerak rotasi dan revolusi bumi serta dampaknya bagi kehidupan di bumi.</p>
+            <p>Gerak rotasi dan revolusi bumi merupakan fenomena fundamental yang memengaruhi kehidupan di bumi dan menjadi dasar dalam astronomi observasional.</p>
         </footer>
     </div>
 </body>
