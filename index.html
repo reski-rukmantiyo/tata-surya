@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Infografik Tata Surya - SMA Kelas 1</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0;
+            margin-bottom: 30px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .topics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .topic-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .topic-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .topic-icon {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .topic-number {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #ff7e5f, #feb47b);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 40px;
+            font-weight: bold;
+            margin-bottom: 15px;
+        }
+
+        .topic-title {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            color: #ff7e5f;
+        }
+
+        .topic-description {
+            font-size: 1rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .navigation {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .nav-button {
+            padding: 12px 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 30px;
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-button:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .topics-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌌 Infografik Tata Surya</h1>
+            <p class="subtitle">Materi Pembelajaran untuk SMA Kelas 1 - Memahami Alam Semesta dan Fenomena Astronomi</p>
+        </header>
+
+        <div class="navigation">
+            <a href="#topics" class="nav-button">Lihat Materi</a>
+            <a href="#about" class="nav-button">Tentang</a>
+        </div>
+
+        <div class="topics-grid" id="topics">
+            <a href="struktur-tata-surya.html" class="topic-card">
+                <div class="topic-icon">🪐</div>
+                <div class="topic-number">1</div>
+                <h2 class="topic-title">Struktur Tata Surya</h2>
+                <p class="topic-description">Komponen utama tata surya, termasuk matahari, planet-planet, dan benda langit lainnya.</p>
+            </a>
+
+            <a href="rotasi-revolusi.html" class="topic-card">
+                <div class="topic-icon">🔄</div>
+                <div class="topic-number">2</div>
+                <h2 class="topic-title">Rotasi dan Revolusi Bumi</h2>
+                <p class="topic-description">Perbedaan gerak rotasi dan revolusi bumi beserta dampaknya bagi kehidupan di bumi.</p>
+            </a>
+
+            <a href="gaya-gravitasi.html" class="topic-card">
+                <div class="topic-icon">🧲</div>
+                <div class="topic-number">3</div>
+                <h2 class="topic-title">Gaya Gravitasi</h2>
+                <p class="topic-description">Konsep gaya gravitasi dan peranannya dalam menjaga keseimbangan tata surya.</p>
+            </a>
+
+            <a href="benda-langit-kecil.html" class="topic-card">
+                <div class="topic-icon">☄️</div>
+                <div class="topic-number">4</div>
+                <h2 class="topic-title">Benda Langit Kecil</h2>
+                <p class="topic-description">Dua jenis benda langit kecil dalam tata surya dan lokasinya.</p>
+            </a>
+
+            <a href="rasi-bintang.html" class="topic-card">
+                <div class="topic-icon">⭐</div>
+                <div class="topic-number">5</div>
+                <h2 class="topic-title">Rasi Bintang</h2>
+                <p class="topic-description">Penjelasan tentang rasi bintang dan bagaimana bentuknya berubah seiring waktu.</p>
+            </a>
+
+            <a href="fungsi-rasi-bintang.html" class="topic-card">
+                <div class="topic-icon">🧭</div>
+                <div class="topic-number">6</div>
+                <h2 class="topic-title">Fungsi Rasi Bintang</h2>
+                <p class="topic-description">Tiga fungsi utama rasi bintang bagi peradaban kuno.</p>
+            </a>
+
+            <a href="dua belas-rasi-bintang.html" class="topic-card">
+                <div class="topic-icon">♈</div>
+                <div class="topic-number">7</div>
+                <h2 class="topic-title">12 Rasi Bintang</h2>
+                <p class="topic-description">Daftar 12 rasi bintang dalam astrologi beserta lambang dan karakteristiknya.</p>
+            </a>
+
+            <a href="perbedaan-kalender.html" class="topic-card">
+                <div class="topic-icon">📅</div>
+                <div class="topic-number">8</div>
+                <h2 class="topic-title">Perbedaan Kalender</h2>
+                <p class="topic-description">Perbedaan sistem perhitungan kalender Masehi dan Hijriah serta dampaknya.</p>
+            </a>
+
+            <a href="pergeseran-tanggal-islam.html" class="topic-card">
+                <div class="topic-icon">⏳</div>
+                <div class="topic-number">9</div>
+                <h2 class="topic-title">Pergeseran Tanggal Islam</h2>
+                <p class="topic-description">Mengapa 1 Syawal dan 1 Muharam selalu bergeser setiap tahun dalam kalender Masehi.</p>
+            </a>
+
+            <a href="pertanyaan-pribadi.html" class="topic-card">
+                <div class="topic-icon">❓</div>
+                <div class="topic-number">10</div>
+                <h2 class="topic-title">Pertanyaan Pribadi</h2>
+                <p class="topic-description">Contoh dan panduan untuk mengembangkan pertanyaan pribadi tentang astronomi.</p>
+            </a>
+        </div>
+
+        <div id="about" style="background: rgba(255, 255, 255, 0.1); border-radius: 20px; padding: 30px; margin: 50px 0;">
+            <h2 style="color: #ff7e5f; margin-bottom: 20px; text-align: center;">Tentang Materi Ini</h2>
+            <p style="line-height: 1.6; text-align: center; max-width: 800px; margin: 0 auto;">
+                Kumpulan infografik ini dirancang untuk membantu siswa SMA kelas 1 memahami konsep-konsep penting dalam astronomi. 
+                Setiap halaman menjelaskan topik dengan visual yang menarik dan informasi yang mudah dipahami. 
+                Materi mencakup struktur tata surya, gerakan bumi, gaya gravitasi, benda langit, rasi bintang, 
+                dan sistem kalender yang digunakan dalam berbagai budaya.
+            </p>
+        </div>
+
+        <footer>
+            <p>Infografik Tata Surya untuk SMA Kelas 1 | Materi Pembelajaran Interaktif</p>
+            <p style="margin-top: 10px;">Klik pada kartu materi di atas untuk mempelajari setiap topik secara lebih detail</p>
+        </footer>
+    </div>
+</body>
+</html>

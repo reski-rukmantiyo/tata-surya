@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konsep Gaya Gravitasi dan Perannya</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ff9a9e;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .concept-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .section-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            color: #ff9a9e;
+        }
+
+        .icon {
+            font-size: 2rem;
+        }
+
+        .definition {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border-left: 5px solid #ff9a9e;
+        }
+
+        .gravity-visualization {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .gravity-well {
+            position: relative;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 154, 158, 0.8), rgba(255, 154, 158, 0.2) 70%, transparent);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 50px rgba(255, 154, 158, 0.5);
+        }
+
+        .central-mass {
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #ff5e62, #ff9966);
+            border-radius: 50%;
+            box-shadow: 0 0 30px #ff5e62;
+        }
+
+        .orbiting-body {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: #4fc3f7;
+            border-radius: 50%;
+            top: 50px;
+            left: 50px;
+            box-shadow: 0 0 10px #4fc3f7;
+            animation: orbit 15s linear infinite;
+        }
+
+        @keyframes orbit {
+            from { transform: translate(100px, 0) rotate(0deg); }
+            to { transform: translate(100px, 0) rotate(360deg); }
+        }
+
+        .factors-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .factor-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .factor-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        .role-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .role-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .role-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .role-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+        }
+
+        .formula {
+            text-align: center;
+            font-size: 1.5rem;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .law-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin: 30px 0;
+            flex-wrap: wrap;
+        }
+
+        .law-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+            max-width: 300px;
+        }
+
+        .law-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧲 Konsep Gaya Gravitasi dan Perannya dalam Tata Surya</h1>
+        
+        <div class="concept-section">
+            <div class="section-title">
+                <div class="icon">⚖️</div>
+                <h2>Apa itu Gaya Gravitasi?</h2>
+            </div>
+            <div class="definition">
+                Gaya gravitasi adalah gaya tarik-menarik antara dua benda bermassa. Semakin besar massa benda, semakin kuat gaya gravitasinya. Semakin jauh jarak antara benda, semakin lemah gaya gravitasinya.
+            </div>
+            
+            <div class="law-container">
+                <div class="law-card">
+                    <div class="law-icon">🔬</div>
+                    <h3>Hukum Newton</h3>
+                    <p>Gaya gravitasi sebanding dengan hasil kali massa kedua benda dan berbanding terbalik dengan kuadrat jarak antara keduanya.</p>
+                </div>
+                
+                <div class="law-card">
+                    <div class="law-icon">🌌</div>
+                    <h3>Teori Relativitas</h3>
+                    <p>Gravitasi bukanlah gaya, tetapi kelengkungan ruang-waktu akibat massa benda.</p>
+                </div>
+            </div>
+            
+            <div class="formula">
+                F = G × (m₁ × m₂) / r²
+            </div>
+            
+            <p style="text-align: center;">
+                Dimana:<br>
+                F = Gaya gravitasi<br>
+                G = Konstanta gravitasi universal<br>
+                m₁, m₂ = Massa kedua benda<br>
+                r = Jarak antara pusat kedua benda
+            </p>
+        </div>
+        
+        <div class="gravity-visualization">
+            <div>
+                <h3 style="text-align: center; margin-bottom: 20px;">Model Gravitasi Newton</h3>
+                <div class="gravity-well">
+                    <div class="central-mass"></div>
+                    <div class="orbiting-body"></div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="concept-section">
+            <div class="section-title">
+                <div class="icon">📐</div>
+                <h2>Faktor yang Mempengaruhi Gaya Gravitasi</h2>
+            </div>
+            
+            <div class="factors-grid">
+                <div class="factor-card">
+                    <div class="factor-icon">🏋️</div>
+                    <h3>Massa Benda</h3>
+                    <p>Semakin besar massa benda, semakin kuat gaya gravitasi yang dihasilkan.</p>
+                </div>
+                
+                <div class="factor-card">
+                    <div class="factor-icon">📍</div>
+                    <h3>Jarak Antara Benda</h3>
+                    <p>Semakin jauh jarak antara benda, semakin lemah gaya gravitasinya.</p>
+                </div>
+                
+                <div class="factor-card">
+                    <div class="factor-icon">🌐</div>
+                    <h3>Konstanta Universal</h3>
+                    <p>G = 6.67 × 10⁻¹¹ N⋅m²/kg² (konstanta gravitasi universal)</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="concept-section">
+            <div class="section-title">
+                <div class="icon">🎭</div>
+                <h2>Peran Gaya Gravitasi dalam Tata Surya</h2>
+            </div>
+            
+            <div class="role-grid">
+                <div class="role-card">
+                    <div class="role-icon">🌞</div>
+                    <h3>Membentuk Tata Surya</h3>
+                    <p>Gravitasi matahari menarik semua planet, asteroid, dan komet ke dalam orbitnya.</p>
+                </div>
+                
+                <div class="role-card">
+                    <div class="role-icon">궤</div>
+                    <h3>Menjaga Orbit Planet</h3>
+                    <p>Planet bergerak dalam orbit elips karena keseimbangan antara gravitasi dan kelembaman.</p>
+                </div>
+                
+                <div class="role-card">
+                    <div class="role-icon">🌙</div>
+                    <h3>Mengatur Satelit</h3>
+                    <p>Bulan mengelilingi bumi karena tarikan gravitasi bumi.</p>
+                </div>
+                
+                <div class="role-card">
+                    <div class="role-icon">🌊</div>
+                    <h3>Menyebabkan Pasang Surut</h3>
+                    <p>Gravitasi bulan dan matahari mempengaruhi pasang surut air laut di bumi.</p>
+                </div>
+                
+                <div class="role-card">
+                    <div class="role-icon">☄️</div>
+                    <h3>Mencegah Tabrakan</h3>
+                    <p>Gravitasi membantu menjaga jarak antar benda langit agar tidak bertabrakan.</p>
+                </div>
+                
+                <div class="role-card">
+                    <div class="role-icon">🌡️</div>
+                    <h3>Mempertahankan Atmósfer</h3>
+                    <p>Gravitasi bumi menahan atmósfer sehingga kehidupan dapat eksis.</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Gaya gravitasi adalah kekuatan fundamental yang menjaga keseimbangan dan pergerakan benda-benda langit dalam tata sura.</p>
+        </footer>
+    </div>
+</body>
+</html>

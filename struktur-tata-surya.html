@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Struktur Tata Surya dan Komponen Utamanya</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0c0e1a, #1a1c3a);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffeb3b;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .solar-system {
+            position: relative;
+            background: radial-gradient(circle at center, #1a1c3a 0%, #0c0e1a 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin: 20px 0;
+            overflow-x: auto;
+            border: 2px solid #333;
+        }
+
+        .orbit-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 1000px;
+            height: 400px;
+            position: relative;
+        }
+
+        .sun {
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, #ffeb3b, #ff9800);
+            border-radius: 50%;
+            position: absolute;
+            left: 50px;
+            box-shadow: 0 0 30px #ffeb3b;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 30px #ffeb3b; }
+            to { box-shadow: 0 0 50px #ffeb3b, 0 0 70px #ff9800; }
+        }
+
+        .planet {
+            border-radius: 50%;
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+        }
+
+        .mercury { width: 15px; height: 15px; background: #8c7853; left: 160px; }
+        .venus { width: 18px; height: 18px; background: #ffc649; left: 200px; }
+        .earth { width: 20px; height: 20px; background: linear-gradient(45deg, #6b93d6, #4fc3f7); left: 250px; }
+        .mars { width: 17px; height: 17px; background: #cd5c5c; left: 300px; }
+        .jupiter { width: 45px; height: 45px; background: linear-gradient(45deg, #d8ca9d, #fab569); left: 380px; }
+        .saturn { width: 40px; height: 40px; background: linear-gradient(45deg, #fab569, #ffcc02); left: 480px; }
+        .uranus { width: 30px; height: 30px; background: #4fd0e7; left: 570px; }
+        .neptune { width: 28px; height: 28px; background: #4b70dd; left: 640px; }
+
+        .saturn::after {
+            content: '';
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            border: 3px solid #ffcc02;
+            border-radius: 50%;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            opacity: 0.7;
+        }
+
+        .asteroid-belt {
+            position: absolute;
+            left: 340px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 200px;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 3px,
+                #888 3px,
+                #888 4px
+            );
+            opacity: 0.6;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .info-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .info-card h3 {
+            color: #ffeb3b;
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .info-card ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .info-card li {
+            margin: 8px 0;
+            padding-left: 20px;
+            position: relative;
+        }
+
+        .info-card li::before {
+            content: "★";
+            color: #ffeb3b;
+            position: absolute;
+            left: 0;
+        }
+
+        .legend {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+        }
+
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .legend-color {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+
+        .responsive-note {
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🌌 Struktur Tata Surya dan Komponen Utamanya</h1>
+        
+        <div class="solar-system">
+            <div class="orbit-container">
+                <div class="sun" title="Matahari"></div>
+                <div class="planet mercury" title="Merkurius"></div>
+                <div class="planet venus" title="Venus"></div>
+                <div class="planet earth" title="Bumi"></div>
+                <div class="planet mars" title="Mars"></div>
+                <div class="asteroid-belt" title="Sabuk Asteroid"></div>
+                <div class="planet jupiter" title="Jupiter"></div>
+                <div class="planet saturn" title="Saturnus"></div>
+                <div class="planet uranus" title="Uranus"></div>
+                <div class="planet neptune" title="Neptunus"></div>
+            </div>
+            <div class="responsive-note">💡 Scroll horizontal untuk melihat seluruh tata surya</div>
+        </div>
+
+        <div class="legend">
+            <div class="legend-item">
+                <div class="legend-color" style="background: radial-gradient(circle, #ffeb3b, #ff9800);"></div>
+                <span>Matahari (Bintang)</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #8c7853;"></div>
+                <span>Merkurius</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #ffc649;"></div>
+                <span>Venus</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(45deg, #6b93d6, #4fc3f7);"></div>
+                <span>Bumi</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #cd5c5c;"></div>
+                <span>Mars</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(45deg, #d8ca9d, #fab569);"></div>
+                <span>Jupiter</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: linear-gradient(45deg, #fab569, #ffcc02);"></div>
+                <span>Saturnus</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4fd0e7;"></div>
+                <span>Uranus</span>
+            </div>
+            <div class="legend-item">
+                <div class="legend-color" style="background: #4b70dd;"></div>
+                <span>Neptunus</span>
+            </div>
+        </div>
+
+        <div class="info-grid">
+            <div class="info-card">
+                <h3>🌟 Matahari</h3>
+                <ul>
+                    <li>Bintang pusat tata surya</li>
+                    <li>Sumber energi dan cahaya</li>
+                    <li>99,86% massa total tata surya</li>
+                    <li>Suhu permukaan: ~5.500°C</li>
+                    <li>Terdiri dari hidrogen dan helium</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>🪐 Planet Dalam</h3>
+                <ul>
+                    <li><strong>Merkurius:</strong> Planet terdekat, sangat panas</li>
+                    <li><strong>Venus:</strong> Planet terpanas, atmosfer tebal</li>
+                    <li><strong>Bumi:</strong> Satu-satunya planet berpenghuni</li>
+                    <li><strong>Mars:</strong> Planet merah, memiliki kutub es</li>
+                    <li>Terbuat dari batuan dan logam</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>🌌 Planet Luar</h3>
+                <ul>
+                    <li><strong>Jupiter:</strong> Planet terbesar, badai besar</li>
+                    <li><strong>Saturnus:</strong> Memiliki cincin indah</li>
+                    <li><strong>Uranus:</strong> Berotasi miring 98°</li>
+                    <li><strong>Neptunus:</strong> Planet terjauh, angin kencang</li>
+                    <li>Raksasa gas dengan banyak satelit</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>☄️ Objek Lainnya</h3>
+                <ul>
+                    <li><strong>Sabuk Asteroid:</strong> Antara Mars-Jupiter</li>
+                    <li><strong>Satelit:</strong> Bulan mengelilingi planet</li>
+                    <li><strong>Komet:</strong> Bongkahan es dari tepi tata surya</li>
+                    <li><strong>Meteoroid:</strong> Batuan kecil di ruang angkasa</li>
+                    <li><strong>Sabuk Kuiper:</strong> Di luar orbit Neptunus</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>⚖️ Gaya Gravitasi</h3>
+                <ul>
+                    <li>Matahari menarik semua objek</li>
+                    <li>Planet bergerak dalam orbit elips</li>
+                    <li>Kecepatan orbit berbeda-beda</li>
+                    <li>Planet dalam bergerak lebih cepat</li>
+                    <li>Menjaga keseimbangan tata surya</li>
+                </ul>
+            </div>
+
+            <div class="info-card">
+                <h3>📏 Fakta Menarik</h3>
+                <ul>
+                    <li>Jarak Bumi-Matahari: 150 juta km</li>
+                    <li>1 tahun Merkurius = 88 hari Bumi</li>
+                    <li>1 tahun Neptunus = 165 tahun Bumi</li>
+                    <li>Saturnus bisa mengapung di air</li>
+                    <li>Jupiter melindungi Bumi dari asteroid</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
