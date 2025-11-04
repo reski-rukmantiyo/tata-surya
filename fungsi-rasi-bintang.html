@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"content="width=device-width, initial-scale=1.0">
+    <title>Fungsi Rasi Bintang bagi Peradaban Kuno</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #2c1810, #1a2a6c, #0c0c0c);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #ffd700;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+        }
+
+        .intro-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .definition {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border-left: 5px solid #ffd700;
+        }
+
+        .functions-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .function-card {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .function-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .function-card.navigation {
+            background: linear-gradient(135deg, rgba(79, 195, 247, 0.3), rgba(33, 150, 243, 0.3));
+        }
+
+        .function-card.calendar {
+            background: linear-gradient(135deg, rgba(106, 27, 154, 0.3), rgba(156, 39, 176, 0.3));
+        }
+
+        .function-card.cultural {
+            background: linear-gradient(135deg, rgba(255, 152, 0, 0.3), rgba(244, 67, 54, 0.3));
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+
+        .icon {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+        }
+
+        .details {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        .civilizations {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .civilization-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .civilization-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+        }
+
+        .star-map {
+            position: relative;
+            height: 300px;
+            background: radial-gradient(circle at center, #0a0a1a, #000000);
+            border-radius: 20px;
+            margin: 40px 0;
+            overflow: hidden;
+            border: 2px solid #ffd700;
+        }
+
+        .constellation-example {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200px;
+            height: 200px;
+        }
+
+        .big-dipper {
+            position: relative;
+            width: 100%;
+            height: 100%;
+        }
+
+        .dipper-star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px white;
+        }
+
+        .dipper-star-1 { top: 20%; left: 20%; width: 5px; height: 5px; }
+        .dipper-star-2 { top: 25%; left: 35%; width: 4px; height: 4px; }
+        .dipper-star-3 { top: 30%; left: 50%; width: 5px; height: 5px; }
+        .dipper-star-4 { top: 35%; left: 65%; width: 4px; height: 4px; }
+        .dipper-star-5 { top: 50%; left: 25%; width: 4px; height: 4px; }
+        .dipper-star-6 { top: 60%; left: 35%; width: 3px; height: 3px; }
+        .dipper-star-7 { top: 70%; left: 45%; width: 4px; height: 4px; }
+
+        .dipper-line {
+            position: absolute;
+            background: rgba(255, 215, 0, 0.7);
+        }
+
+        .line-1 { top: 22%; left: 22%; width: 15%; height: 2px; transform: rotate(20deg); }
+        .line-2 { top: 27%; left: 37%; width: 15%; height: 2px; transform: rotate(25deg); }
+        .line-3 { top: 32%; left: 52%; width: 15%; height: 2px; transform: rotate(30deg); }
+        .line-4 { top: 37%; left: 67%; width: 15%; height: 2px; transform: rotate(-45deg); }
+        .line-5 { top: 52%; left: 27%; width: 10%; height: 2px; transform: rotate(50deg); }
+        .line-6 { top: 62%; left: 37%; width: 10%; height: 2px; transform: rotate(45deg); }
+
+        .navigation-tools {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .tool {
+            flex: 1;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .tool-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        .historical-examples {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .example-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .example-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🧭 3 Fungsi Utama Rasi Bintang bagi Peradaban Kuno</h1>
+        
+        <div class="intro-section">
+            <div class="definition">
+                Sejak zaman prasejarah, manusia telah mengamati dan memberi nama pada kelompok bintang di langit. Rasi bintang memiliki peran penting dalam kehidupan peradaban kuno sebagai panduan, penanggalan, dan inspirasi budaya.
+            </div>
+        </div>
+        
+        <div class="star-map">
+            <div class="constellation-example">
+                <div class="big-dipper">
+                    <div class="dipper-star dipper-star-1"></div>
+                    <div class="dipper-star dipper-star-2"></div>
+                    <div class="dipper-star dipper-star-3"></div>
+                    <div class="dipper-star dipper-star-4"></div>
+                    <div class="dipper-star dipper-star-5"></div>
+                    <div class="dipper-star dipper-star-6"></div>
+                    <div class="dipper-star dipper-star-7"></div>
+                    <div class="dipper-line line-1"></div>
+                    <div class="dipper-line line-2"></div>
+                    <div class="dipper-line line-3"></div>
+                    <div class="dipper-line line-4"></div>
+                    <div class="dipper-line line-5"></div>
+                    <div class="dipper-line line-6"></div>
+                </div>
+            </div>
+            <div style="position: absolute; top: 10px; left: 10px; color: #ffd700;">Rasi Biduk (Big Dipper)</div>
+        </div>
+        
+        <div class="functions-container">
+            <div class="function-card navigation">
+                <div class="card-title">
+                    <div class="icon">⛵</div>
+                    <h2>Navigasi dan Orientasi</h2>
+                </div>
+                <div class="details">
+                    <p>Rasi bintang digunakan sebagai panduan navigasi di darat dan laut. Pelaut kuno menggunakan posisi rasi untuk menentukan arah dan lokasi mereka.</p>
+                </div>
+                <h3>Penerapan:</h3>
+                <ul style="margin: 15px 0; padding-left: 20px;">
+                    <li>Menentukan arah utara melalui Biduk dan Polaris</li>
+                    <li>Menavigasi samudra luas tanpa alat modern</li>
+                    <li>Orientasi di gurun dan wilayah tandus</li>
+                    <li>Menentukan lintang dan bujur relatif</li>
+                </ul>
+            </div>
+            
+            <div class="function-card calendar">
+                <div class="card-title">
+                    <div class="icon">📅</div>
+                    <h2>Penanggalan dan Kalender</h2>
+                </div>
+                <div class="details">
+                    <p>Rasi bintang membantu peradaban kuno menentukan musim, waktu tanam, dan waktu panen. Pergerakan rasi sepanjang tahun menjadi dasar kalender pertanian.</p>
+                </div>
+                <h3>Penerapan:</h3>
+                <ul style="margin: 15px 0; padding-left: 20px;">
+                    <li>Menentukan awal musim semi dan gugur</li>
+                    <li>Menandai waktu tanam dan panen</li>
+                    <li>Membuat kalender pertanian yang akurat</li>
+                    <li>Menentukan waktu ritual dan perayaan</li>
+                </ul>
+            </div>
+            
+            <div class="function-card cultural">
+                <div class="card-title">
+                    <div class="icon">🏛️</div>
+                    <h2>Inspirasi Budaya dan Mitologi</h2>
+                </div>
+                <div class="details">
+                    <p>Rasi bintang menjadi sumber inspirasi untuk mitos, legenda, dan cerita rakyat. Setiap budaya memiliki versi unik tentang makna dan kisah di balik rasi bintang.</p>
+                </div>
+                <h3>Penerapan:</h3>
+                <ul style="margin: 15px 0; padding-left: 20px;">
+                    <li>Menceritakan kisah dewa-dewi dan pahlawan</li>
+                    <li>Menjaga tradisi lisan dari generasi ke generasi</li>
+                    <li>Menghubungkan astronomi dengan spiritualitas</li>
+                    <li>Membentuk identitas budaya suatu bangsa</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="navigation-tools">
+            <div class="tool">
+                <div class="tool-icon">🧭</div>
+                <h3>Kompas Langit</h3>
+                <p>Rasi Biduk menunjuk ke arah Polaris (Bintang Utara) yang selalu berada di utara</p>
+            </div>
+            
+            <div class="tool">
+                <div class="tool-icon">🌾</div>
+                <h3>Kalender Pertanian</h3>
+                <p>Kemunculan rasi tertentu menandakan waktu tanam atau panen</p>
+            </div>
+            
+            <div class="tool">
+                <div class="tool-icon">📜</div>
+                <h3>Cerita Langit</h3>
+                <p>Setiap rasi memiliki kisah yang diturunkan secara lisan</p>
+            </div>
+        </div>
+        
+        <div class="civilizations">
+            <div class="civilization-card">
+                <div class="civilization-icon">🏛️</div>
+                <h3>Peradaban Mesir</h3>
+                <p>Menggunakan rasi Orion untuk menentukan waktu banjir Nil</p>
+            </div>
+            
+            <div class="civilization-card">
+                <div class="civilization-icon">⛵</div>
+                <h3>Pelaut Polinesia</h3>
+                <p>Menguasai seni navigasi berbasis rasi bintang untuk menyeberangi Samudra Pasifik</p>
+            </div>
+            
+            <div class="civilization-card">
+                <div class="civilization-icon">🏯</div>
+                <h3>Peradaban China</h3>
+                <p>Mengembangkan sistem kalender berbasis rasi bintang sejak 3000 SM</p>
+            </div>
+            
+            <div class="civilization-card">
+                <div class="civilization-icon">🏛️</div>
+                <h3>Peradaban Maya</h3>
+                <p>Membangun observatorium astronomi untuk mempelajari pergerakan rasi</p>
+            </div>
+        </div>
+        
+        <div class="historical-examples">
+            <div class="example-card">
+                <div class="example-title">
+                    <div class="icon">⚓</div>
+                    <h3>Navigasi Maritim</h3>
+                </div>
+                <p>Pelaut Yunani kuno menggunakan rasi Ursa Major (Biduk) untuk menavigasi Mediterania. Di belahan bumi selatan, mereka menggunakan rasi Southern Cross.</p>
+            </div>
+            
+            <div class="example-card">
+                <div class="example-title">
+                    <div class="icon">🌾</div>
+                    <h3>Kalender Pertanian</h3>
+                </div>
+                <p>Petani Romawi kuno mengetahui waktu menanam anggur dengan kemunculan rasi Virgo di ufuk timur pada musim semi.</p>
+            </div>
+            
+            <div class="example-card">
+                <div class="example-title">
+                    <div class="icon">🎭</div>
+                    <h3>Mitos dan Legenda</h3>
+                </div>
+                <p>Rasi Orion dalam mitologi Yunani menceritakan kisah pemburu hebat yang diabadikan di langit oleh Zeus.</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Rasi bintang merupakan warisan budaya yang tak ternilai dari peradaban kuno. Ketiga fungsinya - navigasi, penanggalan, dan inspirasi budaya - menunjukkan betapa pentingnya astronomi dalam kehidupan manusia sejak zaman dahulu.</p>
+        </footer>
+    </div>
+</body>
+</html>

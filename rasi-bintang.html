@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rasi Bintang dan Perubahannya</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0c0c0c, #1a1a2e, #16213e);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #f8f9fa;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+        }
+
+        .intro-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .definition {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border-left: 5px solid #ffd700;
+        }
+
+        .star-map {
+            position: relative;
+            height: 400px;
+            background: radial-gradient(circle at center, #0a0a1a, #000000);
+            border-radius: 20px;
+            margin: 40px 0;
+            overflow: hidden;
+            border: 2px solid #ffd700;
+        }
+
+        .constellation-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 10px white;
+        }
+
+        .orion-stars .star:nth-child(1) { top: 30%; left: 20%; width: 4px; height: 4px; }
+        .orion-stars .star:nth-child(2) { top: 25%; left: 30%; width: 3px; height: 3px; }
+        .orion-stars .star:nth-child(3) { top: 35%; left: 35%; width: 5px; height: 5px; }
+        .orion-stars .star:nth-child(4) { top: 40%; left: 45%; width: 3px; height: 3px; }
+        .orion-stars .star:nth-child(5) { top: 45%; left: 55%; width: 4px; height: 4px; }
+        .orion-stars .star:nth-child(6) { top: 50%; left: 65%; width: 3px; height: 3px; }
+        .orion-stars .star:nth-child(7) { top: 55%; left: 75%; width: 4px; height: 4px; }
+
+        .orion-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .orion-line {
+            position: absolute;
+            background: rgba(255, 215, 0, 0.5);
+        }
+
+        .line1 { top: 30%; left: 20%; width: 10%; height: 2px; transform: rotate(20deg); }
+        .line2 { top: 25%; left: 30%; width: 5%; height: 2px; transform: rotate(45deg); }
+        .line3 { top: 35%; left: 35%; width: 10%; height: 2px; transform: rotate(-10deg); }
+        .line4 { top: 40%; left: 45%; width: 10%; height: 2px; transform: rotate(25deg); }
+        .line5 { top: 45%; left: 55%; width: 10%; height: 2px; transform: rotate(-20deg); }
+        .line6 { top: 50%; left: 65%; width: 10%; height: 2px; transform: rotate(30deg); }
+
+        .change-factors {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .factor-card {
+            flex: 1;
+            min-width: 300px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            color: #ffd700;
+        }
+
+        .icon {
+            font-size: 2rem;
+        }
+
+        .explanation {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        .timeline-container {
+            margin: 40px 0;
+        }
+
+        .timeline {
+            position: relative;
+            height: 200px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            margin: 30px 0;
+            overflow: hidden;
+        }
+
+        .time-axis {
+            position: absolute;
+            bottom: 50px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: #ffd700;
+        }
+
+        .time-point {
+            position: absolute;
+            bottom: 40px;
+            width: 20px;
+            height: 20px;
+            background: #ffd700;
+            border-radius: 50%;
+            transform: translateX(-50%);
+        }
+
+        .time-label {
+            position: absolute;
+            bottom: 10px;
+            transform: translateX(-50%);
+            font-size: 0.9rem;
+            color: #ffd700;
+        }
+
+        .time-point-1 { left: 10%; }
+        .time-point-2 { left: 30%; }
+        .time-point-3 { left: 50%; }
+        .time-point-4 { left: 70%; }
+        .time-point-5 { left: 90%; }
+
+        .time-label-1 { left: 10%; }
+        .time-label-2 { left: 30%; }
+        .time-label-3 { left: 50%; }
+        .time-label-4 { left: 70%; }
+        .time-label-5 { left: 90%; }
+
+        .observation-changes {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .observation-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .observation-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: #ffd700;
+        }
+
+        .sky-view {
+            height: 200px;
+            background: radial-gradient(circle at center, #0a0a1a, #000000);
+            border-radius: 15px;
+            margin: 20px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .sky-star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .north-star {
+            top: 20%;
+            left: 50%;
+            width: 6px;
+            height: 6px;
+            background: #ffd700;
+            box-shadow: 0 0 15px #ffd700;
+        }
+
+        .movement-diagram {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .diagram {
+            flex: 1;
+            min-width: 250px;
+            height: 200px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .earth-circle {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #6b93d6, #4fc3f7);
+            border-radius: 50%;
+        }
+
+        .orbit-circle {
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 1px dashed rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+        }
+
+        .arrow {
+            position: absolute;
+            font-size: 2rem;
+            color: #ffd700;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>⭐ Rasi Bintang dan Perubahannya Seiring Waktu</h1>
+        
+        <div class="intro-section">
+            <div class="definition">
+                Rasi bintang adalah pengelompokan bintang-bintang yang tampak membentuk pola tertentu di langit malam. Pola ini diciptakan oleh imajinasi manusia untuk memudahkan identifikasi dan pengamatan bintang.
+            </div>
+        </div>
+        
+        <div class="star-map">
+            <div class="constellation-lines">
+                <div class="orion-stars">
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                    <div class="star"></div>
+                </div>
+                <div class="orion-lines">
+                    <div class="orion-line line1"></div>
+                    <div class="orion-line line2"></div>
+                    <div class="orion-line line3"></div>
+                    <div class="orion-line line4"></div>
+                    <div class="orion-line line5"></div>
+                    <div class="orion-line line6"></div>
+                </div>
+            </div>
+            <div style="position: absolute; top: 10px; left: 10px; color: #ffd700;">Rasi Orion</div>
+        </div>
+        
+        <div class="change-factors">
+            <div class="factor-card">
+                <div class="card-title">
+                    <div class="icon">🔄</div>
+                    <h2>Pergerakan Presesi</h2>
+                </div>
+                <div class="explanation">
+                    <p>Bumi berputar seperti gasing, menyebabkan poros bumi berubah arah secara perlahan dalam siklus 26.000 tahun. Akibatnya, posisi rasi bintang yang terlihat dari bumi berubah seiring waktu.</p>
+                </div>
+            </div>
+            
+            <div class="factor-card">
+                <div class="card-title">
+                    <div class="icon">궤</div>
+                    <h2>Revolusi Bumi</h2>
+                </div>
+                <div class="explanation">
+                    <p>Bumi mengelilingi matahari setiap tahun, membuat rasi bintang yang terlihat berubah sepanjang musim. Rasi yang terlihat di musim dingin berbeda dengan yang terlihat di musim panas.</p>
+                </div>
+            </div>
+            
+            <div class="factor-card">
+                <div class="card-title">
+                    <div class="icon">⏳</div>
+                    <h2>Gerak Sejati Bintang</h2>
+                </div>
+                <div class="explanation">
+                    <p>Bintang-bintang juga bergerak dalam ruang angkasa dengan kecepatan dan arah yang berbeda. Dalam jangka waktu ribuan tahun, pergerakan ini akan mengubah bentuk rasi bintang secara signifikan.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="timeline-container">
+            <h2 style="text-align: center; color: #ffd700; margin-bottom: 20px;">Perubahan Rasi Bintang Sepanjang Waktu</h2>
+            <div class="timeline">
+                <div class="time-axis"></div>
+                <div class="time-point time-point-1"></div>
+                <div class="time-point time-point-2"></div>
+                <div class="time-point time-point-3"></div>
+                <div class="time-point time-point-4"></div>
+                <div class="time-point time-point-5"></div>
+                <div class="time-label time-label-1">Sekarang</div>
+                <div class="time-label time-label-2">1000 tahun</div>
+                <div class="time-label time-label-3">5000 tahun</div>
+                <div class="time-label time-label-4">10.000 tahun</div>
+                <div class="time-label time-label-5">25.000 tahun</div>
+            </div>
+            <p style="text-align: center; margin-top: 20px;">
+                Dalam 26.000 tahun, rasi bintang akan kembali ke posisi semula karena siklus presesi bumi.
+            </p>
+        </div>
+        
+        <div class="observation-changes">
+            <div class="observation-card">
+                <div class="observation-icon">🌅</div>
+                <h3>Perubahan Musiman</h3>
+                <div class="sky-view">
+                    <div class="sky-star" style="top: 30%; left: 20%; width: 3px; height: 3px;"></div>
+                    <div class="sky-star" style="top: 40%; left: 30%; width: 4px; height: 4px;"></div>
+                    <div class="sky-star" style="top: 35%; left: 40%; width: 3px; height: 3px;"></div>
+                    <div class="sky-star" style="top: 50%; left: 50%; width: 5px; height: 5px;"></div>
+                    <div class="north-star"></div>
+                </div>
+                <p>Rasi berbeda terlihat di musim berbeda karena posisi bumi mengelilingi matahari.</p>
+            </div>
+            
+            <div class="observation-card">
+                <div class="observation-icon">🌃</div>
+                <h3>Perubahan Harian</h3>
+                <div class="sky-view">
+                    <div class="sky-star" style="top: 25%; left: 15%; width: 3px; height: 3px;"></div>
+                    <div class="sky-star" style="top: 35%; left: 25%; width: 4px; height: 4px;"></div>
+                    <div class="sky-star" style="top: 30%; left: 35%; width: 3px; height: 3px;"></div>
+                    <div class="sky-star" style="top: 45%; left: 45%; width: 5px; height: 5px;"></div>
+                    <div class="north-star"></div>
+                </div>
+                <p>Rasi tampak bergerak dari timur ke barat sepanjang malam karena rotasi bumi.</p>
+            </div>
+            
+            <div class="observation-card">
+                <div class="observation-icon">🗓️</div>
+                <h3>Perubahan Jangka Panjang</h3>
+                <div class="sky-view">
+                    <div class="sky-star" style="top: 20%; left: 10%; width: 3px; height: 3px;"></div>
+                    <div class="sky-star" style="top: 40%; left: 20%; width: 4px; height: 4px;"></div>
+                    <div class="sky-star" style="top: 30%; left: 30%; width: 3px; height: 3px;"></div>
+                    <div class="sky-star" style="top: 50%; left: 40%; width: 5px; height: 5px;"></div>
+                    <div class="north-star"></div>
+                </div>
+                <p>Dalam ribuan tahun, bentuk rasi akan berubah karena gerak sejati bintang.</p>
+            </div>
+        </div>
+        
+        <div class="movement-diagram">
+            <div class="diagram">
+                <div class="earth-circle"></div>
+                <div class="orbit-circle"></div>
+                <div class="arrow" style="top: 30%; left: 70%;">→</div>
+                <div style="position: absolute; top: 10px; left: 10px; color: #ffd700;">Revolusi Bumi</div>
+            </div>
+            
+            <div class="diagram">
+                <div class="earth-circle"></div>
+                <div class="arrow" style="top: 30%; left: 70%;">↻</div>
+                <div style="position: absolute; top: 10px; left: 10px; color: #ffd700;">Rotasi Bumi</div>
+            </div>
+            
+        </div>
+        
+        <div class="intro-section">
+            <h3>Dampak Perubahan Rasi Bintang</h3>
+            <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+                <div style="flex: 1; min-width: 250px; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px;">
+                    <h4>.Navigator Tradisional</h4>
+                    <p>Perubahan rasi bintang memengaruhi teknik navigasi tradisional yang digunakan pelaut dan pengembara kuno.</p>
+                </div>
+                <div style="flex: 1; min-width: 250px; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px;">
+                    <h4>Penanggalan Kuno</h4>
+                    <p>Banyak peradaban menggunakan posisi rasi bintang untuk menentukan musim dan membuat kalender.</p>
+                </div>
+                <div style="flex: 1; min-width: 250px; background: rgba(0,0,0,0.3); padding: 20px; border-radius: 15px;">
+                    <h4>Mitos dan Legenda</h4>
+                    <p>Perubahan bentuk rasi bintang memengaruhi mitos dan cerita rakyat yang berkembang dalam berbagai budaya.</p>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Rasi bintang yang kita lihat hari ini akan terus berubah seiring waktu karena kombinasi pergerakan bumi dan bintang itu sendiri. Dalam jangka waktu yang sangat panjang, rasi-rasi yang kita kenal akan terlihat sangat berbeda.</p>
+        </footer>
+    </div>
+</body>
+</html>

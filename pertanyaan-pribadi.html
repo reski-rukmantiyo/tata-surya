@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pertanyaan Pribadi tentang Astronomi</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            color: white;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #e94560;
+            margin-bottom: 30px;
+            font-size: 2.5rem;
+            text-shadow: 0 0 10px rgba(233, 69, 96, 0.5);
+        }
+
+        .intro-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 30px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .definition {
+            font-size: 1.2rem;
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            border-left: 5px solid #e94560;
+        }
+
+        .questions-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin: 40px 0;
+        }
+
+        .question-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .question-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .card-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            color: #e94560;
+        }
+
+        .icon {
+            font-size: 2rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        .answer {
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 10px;
+        }
+
+        .examples {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .examples h3 {
+            color: #e94560;
+            margin-bottom: 15px;
+        }
+
+        .example-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        .example-list li {
+            margin: 10px 0;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .example-list li::before {
+            content: "✦";
+            color: #e94560;
+            position: absolute;
+            left: 0;
+            font-size: 1.2rem;
+        }
+
+        .reflection-section {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+            padding: 30px;
+            margin: 40px 0;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            text-align: center;
+        }
+
+        .reflection-title {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            color: #e94560;
+        }
+
+        .prompt-box {
+            margin: 30px 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 15px;
+            text-align: left;
+        }
+
+        .tips {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .tip-card {
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            padding: 20px;
+        }
+
+        .tip-icon {
+            font-size: 2rem;
+            margin-bottom: 15px;
+            color: #e94560;
+        }
+
+        .student-work {
+            height: 200px;
+            background: radial-gradient(circle at center, #0a0a1a, #000000);
+            border-radius: 15px;
+            margin: 30px 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 2px dashed #e94560;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>❓ Pertanyaan Pribadi tentang Astronomi</h1>
+        
+        <div class="intro-section">
+            <div class="definition">
+                Pertanyaan pribadi memungkinkan kamu untuk mengeksplorasi minat dan rasa ingin tahumu tentang astronomi. Ini adalah kesempatan untuk menghubungkan konsep ilmiah dengan pengalaman dan pemikiran pribadimu.
+            </div>
+        </div>
+        
+        <div class="questions-container">
+            <div class="question-card">
+                <div class="card-title">
+                    <div class="icon">🔭</div>
+                    <h2>Contoh Pertanyaan Observasi</h2>
+                </div>
+                <div class="answer">
+                    <p>Pertanyaan yang muncul dari pengamatan langsung terhadap fenomena astronomi di sekitarmu.</p>
+                </div>
+                <div class="examples">
+                    <h3>Contoh:</h3>
+                    <ul class="example-list">
+                        <li>Mengapa langit berubah warna saat matahari terbit dan terbenam?</li>
+                        <li>Bagaimana cara membedakan planet dari bintang saat malam hari?</li>
+                        <li>Mengapa bulan tampak berubah bentuk setiap malam?</li>
+                        <li>Apa yang akan terjadi jikabumi tidak berotasi?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="question-card">
+                <div class="card-title">
+                    <div class="icon">💭</div>
+                    <h2>Contoh Pertanyaan Konseptual</h2>
+                </div>
+                <div class="answer">
+                    <p>Pertanyaan yang mengeksplorasi pemahamanmu terhadap konsep-konsep astronomi secara lebih dalam.</p>
+                </div>
+                <div class="examples">
+                    <h3>Contoh:</h3>
+                    <ul class="example-list">
+                        <li>Bagaimana gaya gravitasi memengaruhi kehidupan di bumi?</li>
+                        <li>Mengapa Pluto tidak lagi dikategorikan sebagai planet?</li>
+                        <li>Apakah mungkin ada kehidupan di planet lain?</li>
+                        <li>Bagaimana cara ilmuwan mengetahui jarak ke bintang-bintang?</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="question-card">
+                <div class="card-title">
+                    <div class="icon">🌎</div>
+                    <h2>Contoh Pertanyaan Filosofis</h2>
+                </div>
+                <div class="answer">
+                    <p>Pertanyaan yang menghubungkan astronomi dengan pemikiran lebih dalam tentang keberadaan dan tempat kita di alam semesta.</p>
+                </div>
+                <div class="examples">
+                    <h3>Contoh:</h3>
+                    <ul class="example-list">
+                        <li>Apa arti penting mempelajari astronomi dalam kehidupan sehari-hari?</li>
+                        <li>Bagaimana pengetahuan tentang tata surya mengubah pandangan kita tentang alam semesta?</li>
+                        <li>Mengapa manusia selalu tertarik untuk mengeksplorasi luar angkasa?</li>
+                        <li>Apa yang akan kamu lakukan jika bertemu makhluk hidup dari planet lain?</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        
+        <div class="reflection-section">
+            <div class="reflection-title">
+                <div class="icon">✍️</div>
+                <h2>Refleksi Pribadi</h2>
+            </div>
+            
+            <div class="prompt-box">
+                <h3 style="color: #e94560; margin-bottom: 15px;">Prompt untuk Refleksimu:</h3>
+                <p>Pilih salah satu topik berikut dan tulis refleksimu:</p>
+                <ol style="margin: 15px 0; padding-left: 20px;">
+                    <li>Jika kamu bisa mengunjungi planet mana pun di tata sura, planet apa yang akan kamu pilih dan mengapa?</li>
+                    <li>Bayangkan kamu adalah seorang astronot. Ceritakan pengalamanmu selama misi luar angkasa.</li>
+                    <li>Bagaimana pengetahuan tentang astronomi mengubah cara kamu memandang dunia dan kehidupan?</li>
+                    <li>Apa pertanyaan paling menarik yang ingin kamu jawab tentang alam semesta?</li>
+                </ol>
+            </div>
+            
+            <div class="student-work">
+                <p>Ruang untuk menulis refleksimu...</p>
+            </div>
+        </div>
+        
+        <div class="tips">
+            <div class="tip-card">
+                <div class="tip-icon">🔍</div>
+                <h3>Cara Mengembangkan Pertanyaan</h3>
+                <p>Mulailah dengan mengamati fenomena sekitarmu, lalu tanyakan "mengapa" dan "bagaimana". Gunakan kata kunci seperti "jika", "apa yang terjadi jika", atau "bagaimana cara".</p>
+            </div>
+            
+            <div class="tip-card">
+                <div class="tip-icon">📚</div>
+                <h3>Hubungkan dengan Ilmu Lain</h3>
+                <p>Pertanyaan pribadi sering kali menghubungkan astronomi dengan fisika, kimia, biologi, bahkan filsafat. Jangan ragu untuk mengeksplorasi hubungan ini.</p>
+            </div>
+            
+            <div class="tip-card">
+                <div class="tip-icon">🌟</div>
+                <h3>Jadikan Inspirasi</h3>
+                <p>Gunakan pertanyaan pribadi sebagai sarana untuk mengembangkan rasa ingin tahu dan kreativitas. Ini adalah bagian penting dari proses belajar.</p>
+            </div>
+        </div>
+        
+        <footer>
+            <p>Pertanyaan pribadi adalah jembatan antara pengetahuan ilmiah dan pemahaman pribadi. Dengan mengeksplorasi pertanyaan-pertanyaan ini, kamu tidak hanya memahami konsep astronomi lebih dalam, tetapi juga mengembangkan hubungan pribadi dengan alam semesta yang luas dan misterius.</p>
+        </footer>
+    </div>
+</body>
+</html>
