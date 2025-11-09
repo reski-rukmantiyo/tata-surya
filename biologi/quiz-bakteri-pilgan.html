@@ -1,0 +1,1406 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kuis Bakteri - Pilihan Ganda</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .container {
+            max-width: 900px;
+            width: 100%;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+
+        .content {
+            padding: 30px;
+        }
+
+        .setup-screen, .quiz-screen, .result-screen {
+            display: none;
+        }
+
+        .setup-screen.active, .quiz-screen.active, .result-screen.active {
+            display: block;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            color: #333;
+            font-size: 1.1em;
+        }
+
+        input[type="number"], select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #ddd;
+            border-radius: 8px;
+            font-size: 1em;
+            transition: border-color 0.3s;
+        }
+
+        input[type="number"]:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+        }
+
+        .btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-size: 1.1em;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+        }
+
+        .btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        .btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .btn-secondary {
+            background: #6c757d;
+            margin-top: 10px;
+        }
+
+        .question-card {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .question-number {
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .question-text {
+            font-size: 1.3em;
+            color: #333;
+            margin-bottom: 25px;
+            line-height: 1.6;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .option {
+            background: white;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            padding: 15px 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            font-size: 1.1em;
+        }
+
+        .option:hover {
+            border-color: #667eea;
+            background: #f0f4ff;
+            transform: translateX(5px);
+        }
+
+        .option input[type="radio"] {
+            margin-right: 15px;
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .option.selected {
+            border-color: #667eea;
+            background: #e8eeff;
+            font-weight: 600;
+        }
+
+        .option.correct {
+            border-color: #28a745;
+            background: #d4edda;
+            color: #155724;
+        }
+
+        .option.incorrect {
+            border-color: #dc3545;
+            background: #f8d7da;
+            color: #721c24;
+        }
+
+        .option.disabled {
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .option-label {
+            font-weight: 600;
+            margin-right: 10px;
+            min-width: 30px;
+            color: #667eea;
+        }
+
+        .feedback {
+            margin-top: 20px;
+            padding: 20px;
+            border-radius: 8px;
+            display: none;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feedback.show {
+            display: block;
+        }
+
+        .feedback.correct {
+            background: #d4edda;
+            border: 2px solid #28a745;
+            color: #155724;
+        }
+
+        .feedback.incorrect {
+            background: #f8d7da;
+            border: 2px solid #dc3545;
+            color: #721c24;
+        }
+
+        .feedback-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .feedback-text {
+            line-height: 1.6;
+            font-size: 1.05em;
+        }
+
+        .progress-bar {
+            background: #e9ecef;
+            height: 10px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+            height: 100%;
+            transition: width 0.3s;
+        }
+
+        .score-display {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .score-number {
+            font-size: 4em;
+            font-weight: 700;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .score-text {
+            font-size: 1.5em;
+            color: #666;
+            margin-top: 10px;
+        }
+
+        .score-grade {
+            font-size: 2em;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+
+        .grade-a { color: #28a745; }
+        .grade-b { color: #17a2b8; }
+        .grade-c { color: #ffc107; }
+        .grade-d { color: #fd7e14; }
+        .grade-e { color: #dc3545; }
+
+        .result-details {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 20px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .result-item {
+            padding: 20px;
+            border-bottom: 1px solid #ddd;
+            margin-bottom: 15px;
+            background: white;
+            border-radius: 8px;
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+
+        .result-item-question {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 15px;
+            font-size: 1.1em;
+        }
+
+        .result-item-answer {
+            margin: 10px 0;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .result-item-answer.user-answer {
+            background: #fff3cd;
+            border-left: 4px solid #ffc107;
+        }
+
+        .result-item-answer.correct-answer {
+            background: #d4edda;
+            border-left: 4px solid #28a745;
+        }
+
+        .category-badge {
+            display: inline-block;
+            padding: 5px 12px;
+            background: #667eea;
+            color: white;
+            border-radius: 15px;
+            font-size: 0.9em;
+            margin-bottom: 15px;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+
+        .stat-card {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .stat-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #667eea;
+        }
+
+        .stat-label {
+            color: #666;
+            margin-top: 5px;
+            font-size: 0.9em;
+        }
+
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.8em;
+            }
+
+            .question-text {
+                font-size: 1.1em;
+            }
+
+            .score-number {
+                font-size: 3em;
+            }
+
+            .option {
+                font-size: 1em;
+                padding: 12px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🦠 Kuis Bakteri</h1>
+            <p>Pilihan Ganda - Uji Pemahaman Anda</p>
+        </div>
+
+        <div class="content">
+            <!-- Setup Screen -->
+            <div class="setup-screen active">
+                <div class="form-group">
+                    <label for="questionCount">Berapa soal yang ingin Anda kerjakan?</label>
+                    <input type="number" id="questionCount" min="1" max="60" value="10" placeholder="Masukkan jumlah soal">
+                </div>
+
+                <div class="form-group">
+                    <label for="categorySelect">Pilih Kategori Soal:</label>
+                    <select id="categorySelect">
+                        <option value="all">Semua Kategori</option>
+                        <option value="definisi">Definisi & Sejarah</option>
+                        <option value="struktur">Struktur Bakteri</option>
+                        <option value="reproduksi">Reproduksi</option>
+                        <option value="klasifikasi">Klasifikasi</option>
+                        <option value="peranan">Peranan Bakteri</option>
+                        <option value="cyanobacteria">Cyanobacteria</option>
+                    </select>
+                </div>
+
+                <button class="btn" onclick="startQuiz()">Mulai Kuis</button>
+            </div>
+
+            <!-- Quiz Screen -->
+            <div class="quiz-screen">
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressFill"></div>
+                </div>
+
+                <div class="question-card">
+                    <div class="category-badge" id="currentCategory"></div>
+                    <div class="question-number" id="questionNumber"></div>
+                    <div class="question-text" id="questionText"></div>
+
+                    <div class="options-container" id="optionsContainer">
+                        <!-- Options will be inserted here -->
+                    </div>
+                </div>
+
+                <div class="feedback" id="feedback">
+                    <div class="feedback-title" id="feedbackTitle"></div>
+                    <div class="feedback-text" id="feedbackText"></div>
+                </div>
+
+                <button class="btn" id="submitBtn" onclick="checkAnswer()" disabled>Kirim Jawaban</button>
+                <button class="btn btn-secondary" id="nextBtn" onclick="nextQuestion()" style="display: none;">Soal Berikutnya</button>
+            </div>
+
+            <!-- Result Screen -->
+            <div class="result-screen">
+                <div class="score-display">
+                    <div class="score-number" id="finalScore"></div>
+                    <div class="score-text">dari <span id="totalQuestions"></span> soal</div>
+                    <div class="score-text" id="percentage"></div>
+                    <div class="score-grade" id="grade"></div>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number" id="correctCount" style="color: #28a745;">0</div>
+                        <div class="stat-label">Benar</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number" id="incorrectCount" style="color: #dc3545;">0</div>
+                        <div class="stat-label">Salah</div>
+                    </div>
+                </div>
+
+                <div class="result-details" id="resultDetails"></div>
+
+                <button class="btn" onclick="restartQuiz()">Ulangi Kuis</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Question Bank - Multiple Choice Format
+        const questionBank = [
+            // Definisi & Sejarah
+            {
+                category: "definisi",
+                question: "Apa arti kata 'bakterion' dalam bahasa Yunani?",
+                options: [
+                    "Makhluk kecil",
+                    "Batang kecil",
+                    "Organisme tunggal",
+                    "Sel sederhana"
+                ],
+                correct: 1,
+                explanation: "Bakterion dalam bahasa Yunani berarti 'batang kecil' atau tongkat, mengacu pada bentuk bakteri yang seperti batang."
+            },
+            {
+                category: "definisi",
+                question: "Siapa ilmuwan yang pertama kali mengamati bakteri menggunakan mikroskop pada abad ke-17?",
+                options: [
+                    "Louis Pasteur",
+                    "Robert Koch",
+                    "Antonie van Leeuwenhoek",
+                    "Alexander Fleming"
+                ],
+                correct: 2,
+                explanation: "Antonie van Leeuwenhoek adalah pedagang tekstil dari Belanda yang pertama kali mengamati bakteri sekitar tahun 1674."
+            },
+            {
+                category: "definisi",
+                question: "Apa yang dimaksud dengan organisme prokariotik?",
+                options: [
+                    "Organisme yang memiliki inti sel",
+                    "Organisme yang tidak memiliki membran inti sel",
+                    "Organisme yang bersel banyak",
+                    "Organisme yang memiliki klorofil"
+                ],
+                correct: 1,
+                explanation: "Prokariotik berarti tidak memiliki membran inti sel, sehingga DNA-nya berada langsung di sitoplasma."
+            },
+            {
+                category: "definisi",
+                question: "Siapa yang menemukan antibiotik penisilin pada tahun 1928?",
+                options: [
+                    "Louis Pasteur",
+                    "Alexander Fleming",
+                    "Robert Koch",
+                    "Hans Christian Gram"
+                ],
+                correct: 1,
+                explanation: "Alexander Fleming secara tidak sengaja menemukan penisilin dari jamur Penicillium notatum pada tahun 1928."
+            },
+            {
+                category: "definisi",
+                question: "Siapa tokoh yang menyusun Postulat Koch?",
+                options: [
+                    "Louis Pasteur",
+                    "Robert Koch",
+                    "Antonie van Leeuwenhoek",
+                    "Hans Christian Gram"
+                ],
+                correct: 1,
+                explanation: "Robert Koch menyusun Postulat Koch untuk membuktikan bahwa mikroba tertentu menyebabkan penyakit tertentu."
+            },
+            {
+                category: "definisi",
+                question: "Proses pemanasan untuk membunuh mikroba yang diciptakan oleh Louis Pasteur disebut?",
+                options: [
+                    "Sterilisasi",
+                    "Pasteurisasi",
+                    "Desinfeksi",
+                    "Antiseptik"
+                ],
+                correct: 1,
+                explanation: "Pasteurisasi adalah proses pemanasan yang dinamai sesuai nama penemunya, Louis Pasteur."
+            },
+
+            // Struktur Bakteri
+            {
+                category: "struktur",
+                question: "Apa fungsi utama flagela pada bakteri?",
+                options: [
+                    "Melindungi sel",
+                    "Sebagai alat gerak",
+                    "Menyimpan nutrisi",
+                    "Reproduksi"
+                ],
+                correct: 1,
+                explanation: "Flagela adalah struktur seperti bulu cambuk yang berfungsi sebagai alat gerak bakteri."
+            },
+            {
+                category: "struktur",
+                question: "Dinding sel bakteri tersusun atas?",
+                options: [
+                    "Selulosa",
+                    "Kitin",
+                    "Peptidoglikan",
+                    "Lignin"
+                ],
+                correct: 2,
+                explanation: "Peptidoglikan (murein) adalah komponen utama penyusun dinding sel bakteri."
+            },
+            {
+                category: "struktur",
+                question: "Dimana terjadinya respirasi sel pada bakteri?",
+                options: [
+                    "Mitokondria",
+                    "Kloroplas",
+                    "Membran plasma",
+                    "Ribosom"
+                ],
+                correct: 2,
+                explanation: "Karena bakteri tidak memiliki mitokondria, respirasi sel terjadi di membran plasma."
+            },
+            {
+                category: "struktur",
+                question: "Apa fungsi ribosom dalam sel bakteri?",
+                options: [
+                    "Fotosintesis",
+                    "Sintesis protein",
+                    "Respirasi",
+                    "Penyimpanan DNA"
+                ],
+                correct: 1,
+                explanation: "Ribosom berfungsi untuk sintesis protein di dalam sel bakteri."
+            },
+            {
+                category: "struktur",
+                question: "Lapisan pelindung tambahan yang menyelimuti dinding sel bakteri disebut?",
+                options: [
+                    "Membran plasma",
+                    "Kapsul",
+                    "Flagela",
+                    "Pilus"
+                ],
+                correct: 1,
+                explanation: "Kapsul atau lapisan lendir adalah lapisan pelindung tambahan yang melindungi bakteri dari fagositosis."
+            },
+            {
+                category: "struktur",
+                question: "Bentuk bakteri yang menyerupai bola disebut?",
+                options: [
+                    "Basil",
+                    "Spirilum",
+                    "Kokus",
+                    "Vibrio"
+                ],
+                correct: 2,
+                explanation: "Kokus adalah bentuk bakteri yang bulat seperti bola."
+            },
+            {
+                category: "struktur",
+                question: "Bakteri berbentuk batang disebut?",
+                options: [
+                    "Kokus",
+                    "Basil",
+                    "Spirilum",
+                    "Spirochaeta"
+                ],
+                correct: 1,
+                explanation: "Basil adalah bentuk bakteri yang menyerupai batang."
+            },
+            {
+                category: "struktur",
+                question: "Apa fungsi mesosom pada bakteri?",
+                options: [
+                    "Fotosintesis",
+                    "Gerak",
+                    "Pembelahan sel dan respirasi",
+                    "Penyimpanan nutrisi"
+                ],
+                correct: 2,
+                explanation: "Mesosom adalah lipatan membran plasma yang membantu pembelahan sel dan respirasi."
+            },
+            {
+                category: "struktur",
+                question: "Struktur yang digunakan bakteri untuk konjugasi adalah?",
+                options: [
+                    "Flagela",
+                    "Kapsul",
+                    "Pilus",
+                    "Ribosom"
+                ],
+                correct: 2,
+                explanation: "Pilus (pili seks) digunakan untuk pertukaran materi genetik saat konjugasi."
+            },
+
+            // Reproduksi
+            {
+                category: "reproduksi",
+                question: "Berapa lama waktu yang dibutuhkan bakteri untuk membelah diri pada kondisi optimal?",
+                options: [
+                    "10 menit",
+                    "20 menit",
+                    "30 menit",
+                    "60 menit"
+                ],
+                correct: 1,
+                explanation: "Pada kondisi optimal, bakteri dapat membelah diri setiap 20 menit."
+            },
+            {
+                category: "reproduksi",
+                question: "Reproduksi aseksual pada bakteri disebut?",
+                options: [
+                    "Konjugasi",
+                    "Pembelahan biner",
+                    "Fragmentasi",
+                    "Sporulasi"
+                ],
+                correct: 1,
+                explanation: "Pembelahan biner adalah reproduksi aseksual dimana satu sel membelah menjadi dua sel identik."
+            },
+            {
+                category: "reproduksi",
+                question: "Proses penyerapan DNA dari lingkungan oleh bakteri disebut?",
+                options: [
+                    "Transformasi",
+                    "Transduksi",
+                    "Konjugasi",
+                    "Replikasi"
+                ],
+                correct: 0,
+                explanation: "Transformasi adalah proses bakteri menyerap DNA bebas dari lingkungan sekitarnya."
+            },
+            {
+                category: "reproduksi",
+                question: "Perpindahan DNA bakteri melalui virus bakteriofag disebut?",
+                options: [
+                    "Transformasi",
+                    "Transduksi",
+                    "Konjugasi",
+                    "Mutasi"
+                ],
+                correct: 1,
+                explanation: "Transduksi adalah transfer DNA melalui bantuan virus bakteriofag."
+            },
+            {
+                category: "reproduksi",
+                question: "Transfer DNA langsung antar bakteri melalui jembatan sitoplasma disebut?",
+                options: [
+                    "Transformasi",
+                    "Transduksi",
+                    "Konjugasi",
+                    "Translokasi"
+                ],
+                correct: 2,
+                explanation: "Konjugasi adalah transfer DNA langsung melalui pilus yang menghubungkan dua sel bakteri."
+            },
+            {
+                category: "reproduksi",
+                question: "Jika 1 bakteri membelah setiap 20 menit, berapa jumlah bakteri setelah 1 jam?",
+                options: [
+                    "4 sel",
+                    "6 sel",
+                    "8 sel",
+                    "16 sel"
+                ],
+                correct: 2,
+                explanation: "1 jam = 60 menit = 3 generasi (60/20). Jadi 1 × 2³ = 8 sel."
+            },
+            {
+                category: "reproduksi",
+                question: "Struktur dorman yang dibentuk bakteri untuk bertahan dalam kondisi ekstrem disebut?",
+                options: [
+                    "Kista",
+                    "Endospora",
+                    "Kapsul",
+                    "Granula"
+                ],
+                correct: 1,
+                explanation: "Endospora adalah struktur dorman yang sangat tahan terhadap kondisi ekstrem."
+            },
+
+            // Klasifikasi
+            {
+                category: "klasifikasi",
+                question: "Bakteri yang menyerap warna ungu pada pewarnaan Gram disebut?",
+                options: [
+                    "Gram negatif",
+                    "Gram positif",
+                    "Gram netral",
+                    "Non-Gram"
+                ],
+                correct: 1,
+                explanation: "Bakteri Gram positif memiliki lapisan peptidoglikan tebal dan menyerap warna ungu."
+            },
+            {
+                category: "klasifikasi",
+                question: "Bakteri yang memiliki flagela di seluruh permukaan sel disebut?",
+                options: [
+                    "Monotrik",
+                    "Lofotrik",
+                    "Amfitrik",
+                    "Peritrik"
+                ],
+                correct: 3,
+                explanation: "Peritrik adalah bakteri yang memiliki flagela tersebar di seluruh permukaan sel."
+            },
+            {
+                category: "klasifikasi",
+                question: "Bakteri yang dapat hidup dengan atau tanpa oksigen disebut?",
+                options: [
+                    "Aerob obligat",
+                    "Anaerob obligat",
+                    "Anaerob fakultatif",
+                    "Mikroaerofil"
+                ],
+                correct: 2,
+                explanation: "Bakteri anaerob fakultatif dapat hidup baik dengan oksigen maupun tanpa oksigen."
+            },
+            {
+                category: "klasifikasi",
+                question: "Bakteri yang membuat makanan sendiri menggunakan energi cahaya disebut?",
+                options: [
+                    "Kemoautotrof",
+                    "Fotoautotrof",
+                    "Heterotrof",
+                    "Saprofit"
+                ],
+                correct: 1,
+                explanation: "Fotoautotrof adalah bakteri yang menggunakan energi cahaya untuk fotosintesis."
+            },
+            {
+                category: "klasifikasi",
+                question: "Bakteri yang hidup di lingkungan ekstrem disebut?",
+                options: [
+                    "Eubacteria",
+                    "Archaebacteria",
+                    "Cyanobacteria",
+                    "Proteobacteria"
+                ],
+                correct: 1,
+                explanation: "Archaebacteria dapat hidup di lingkungan ekstrem seperti mata air panas atau laut yang sangat asin."
+            },
+            {
+                category: "klasifikasi",
+                question: "Bakteri yang mendapat makanan dari organisme mati disebut?",
+                options: [
+                    "Parasit",
+                    "Saprofit",
+                    "Patogen",
+                    "Autotrof"
+                ],
+                correct: 1,
+                explanation: "Saprofit adalah bakteri yang menguraikan sisa-sisa organisme mati."
+            },
+            {
+                category: "klasifikasi",
+                question: "Contoh bakteri Gram negatif adalah?",
+                options: [
+                    "Staphylococcus aureus",
+                    "Bacillus anthracis",
+                    "Escherichia coli",
+                    "Streptococcus pneumoniae"
+                ],
+                correct: 2,
+                explanation: "Escherichia coli adalah contoh bakteri Gram negatif dengan lapisan peptidoglikan tipis."
+            },
+            {
+                category: "klasifikasi",
+                question: "Bakteri yang membutuhkan oksigen pada konsentrasi rendah disebut?",
+                options: [
+                    "Aerob",
+                    "Anaerob",
+                    "Mikroaerofil",
+                    "Fakultatif"
+                ],
+                correct: 2,
+                explanation: "Mikroaerofil membutuhkan oksigen tapi hanya pada konsentrasi rendah (2-10% O₂)."
+            },
+
+            // Peranan Bakteri
+            {
+                category: "peranan",
+                question: "Bakteri yang menyebabkan penyakit TBC adalah?",
+                options: [
+                    "Clostridium tetani",
+                    "Mycobacterium tuberculosis",
+                    "Salmonella typhi",
+                    "Vibrio cholerae"
+                ],
+                correct: 1,
+                explanation: "Mycobacterium tuberculosis adalah bakteri penyebab penyakit tuberkulosis (TBC)."
+            },
+            {
+                category: "peranan",
+                question: "Bakteri yang digunakan untuk membersihkan tumpahan minyak adalah?",
+                options: [
+                    "Rhizobium",
+                    "Lactobacillus",
+                    "Pseudomonas",
+                    "Acetobacter"
+                ],
+                correct: 2,
+                explanation: "Pseudomonas digunakan dalam bioremediasi untuk membersihkan tumpahan minyak."
+            },
+            {
+                category: "peranan",
+                question: "Bakteri yang bersimbiosis dengan akar kacang-kacangan untuk mengikat nitrogen adalah?",
+                options: [
+                    "Azotobacter",
+                    "Rhizobium",
+                    "Nitrobacter",
+                    "Nitrosomonas"
+                ],
+                correct: 1,
+                explanation: "Rhizobium bersimbiosis mutualisme dengan akar tanaman kacang-kacangan untuk fiksasi nitrogen."
+            },
+            {
+                category: "peranan",
+                question: "Bakteri yang menyebabkan penyakit tetanus adalah?",
+                options: [
+                    "Bacillus anthracis",
+                    "Clostridium tetani",
+                    "Corynebacterium diphtheriae",
+                    "Treponema pallidum"
+                ],
+                correct: 1,
+                explanation: "Clostridium tetani adalah bakteri anaerob penyebab penyakit tetanus."
+            },
+            {
+                category: "peranan",
+                question: "Bakteri yang digunakan dalam pembuatan yogurt adalah?",
+                options: [
+                    "Escherichia coli",
+                    "Lactobacillus bulgaricus",
+                    "Staphylococcus aureus",
+                    "Pseudomonas aeruginosa"
+                ],
+                correct: 1,
+                explanation: "Lactobacillus bulgaricus bersama Streptococcus thermophilus digunakan dalam fermentasi yogurt."
+            },
+            {
+                category: "peranan",
+                question: "Bakteri yang menghasilkan antibiotik streptomisin adalah?",
+                options: [
+                    "Bacillus subtilis",
+                    "Streptomyces griseus",
+                    "Penicillium notatum",
+                    "Acetobacter xylinum"
+                ],
+                correct: 1,
+                explanation: "Streptomyces griseus menghasilkan antibiotik streptomisin."
+            },
+            {
+                category: "peranan",
+                question: "Bakteri penyebab kolera adalah?",
+                options: [
+                    "Salmonella typhi",
+                    "Vibrio cholerae",
+                    "Shigella dysenteriae",
+                    "Escherichia coli"
+                ],
+                correct: 1,
+                explanation: "Vibrio cholerae adalah bakteri berbentuk koma penyebab penyakit kolera."
+            },
+            {
+                category: "peranan",
+                question: "Bakteri yang digunakan untuk membuat nata de coco adalah?",
+                options: [
+                    "Lactobacillus",
+                    "Acetobacter xylinum",
+                    "Streptococcus",
+                    "Leuconostoc"
+                ],
+                correct: 1,
+                explanation: "Acetobacter xylinum menghasilkan selulosa bakteri yang membentuk nata de coco."
+            },
+
+            // Cyanobacteria
+            {
+                category: "cyanobacteria",
+                question: "Nama lain dari Cyanobacteria adalah?",
+                options: [
+                    "Alga merah",
+                    "Alga biru-hijau",
+                    "Alga coklat",
+                    "Alga emas"
+                ],
+                correct: 1,
+                explanation: "Cyanobacteria sering disebut alga biru-hijau (blue-green algae) meskipun sebenarnya bukan alga."
+            },
+            {
+                category: "cyanobacteria",
+                question: "Apa fungsi heterokista pada Cyanobacteria?",
+                options: [
+                    "Fotosintesis",
+                    "Fiksasi nitrogen",
+                    "Reproduksi",
+                    "Penyimpanan makanan"
+                ],
+                correct: 1,
+                explanation: "Heterokista adalah sel khusus yang mengandung enzim nitrogenase untuk mengikat nitrogen."
+            },
+            {
+                category: "cyanobacteria",
+                question: "Pigmen yang dimiliki Cyanobacteria adalah?",
+                options: [
+                    "Klorofil saja",
+                    "Karotenoid saja",
+                    "Fikobilin",
+                    "Xantofil"
+                ],
+                correct: 2,
+                explanation: "Cyanobacteria memiliki pigmen fikobilin yang memberi warna biru-hijau."
+            },
+            {
+                category: "cyanobacteria",
+                question: "Cyanobacteria yang bersimbiosis dengan tanaman paku air adalah?",
+                options: [
+                    "Nostoc",
+                    "Anabaena azollae",
+                    "Oscillatoria",
+                    "Spirulina"
+                ],
+                correct: 1,
+                explanation: "Anabaena azollae bersimbiosis dengan tanaman paku air Azolla untuk fiksasi nitrogen."
+            },
+            {
+                category: "cyanobacteria",
+                question: "Cara reproduksi Cyanobacteria berfilamen melalui?",
+                options: [
+                    "Pembelahan biner saja",
+                    "Konjugasi",
+                    "Fragmentasi (hormogonia)",
+                    "Transduksi"
+                ],
+                correct: 2,
+                explanation: "Cyanobacteria berfilamen dapat bereproduksi melalui fragmentasi yang menghasilkan hormogonia."
+            },
+            {
+                category: "cyanobacteria",
+                question: "Dampak negatif blooming Cyanobacteria adalah?",
+                options: [
+                    "Meningkatkan oksigen",
+                    "Menyuburkan tanaman",
+                    "Menghasilkan toksin berbahaya",
+                    "Memperbaiki kualitas air"
+                ],
+                correct: 2,
+                explanation: "Blooming Cyanobacteria dapat menghasilkan toksin seperti mikrosistin yang berbahaya bagi hewan dan manusia."
+            },
+            {
+                category: "cyanobacteria",
+                question: "Struktur penyimpanan cadangan makanan pada Cyanobacteria disebut?",
+                options: [
+                    "Heterokista",
+                    "Akinet",
+                    "Hormogonia",
+                    "Tilakoid"
+                ],
+                correct: 1,
+                explanation: "Akinet adalah sel vegetatif yang menyimpan cadangan makanan dan memiliki dinding tebal."
+            },
+            {
+                category: "cyanobacteria",
+                question: "Cyanobacteria termasuk dalam kelompok?",
+                options: [
+                    "Archaebacteria",
+                    "Eubacteria",
+                    "Protista",
+                    "Fungi"
+                ],
+                correct: 1,
+                explanation: "Cyanobacteria adalah bakteri fotosintetik yang termasuk dalam kelompok Eubacteria."
+            },
+
+            // Additional Questions
+            {
+                category: "definisi",
+                question: "Ilmu yang mempelajari bakteri disebut?",
+                options: [
+                    "Mikologi",
+                    "Bakteriologi",
+                    "Virologi",
+                    "Protozoologi"
+                ],
+                correct: 1,
+                explanation: "Bakteriologi adalah cabang mikrobiologi yang khusus mempelajari bakteri."
+            },
+            {
+                category: "struktur",
+                question: "DNA bakteri berbentuk?",
+                options: [
+                    "Linear",
+                    "Lingkaran ganda",
+                    "Spiral",
+                    "Bercabang"
+                ],
+                correct: 1,
+                explanation: "DNA bakteri (nukleoid) berbentuk lingkaran ganda (circular DNA) dan tidak dikelilingi membran."
+            },
+            {
+                category: "klasifikasi",
+                question: "Bakteri dengan satu flagela di ujung sel disebut?",
+                options: [
+                    "Atrik",
+                    "Monotrik",
+                    "Lofotrik",
+                    "Peritrik"
+                ],
+                correct: 1,
+                explanation: "Monotrik adalah bakteri yang memiliki satu flagela di salah satu ujung sel."
+            },
+            {
+                category: "reproduksi",
+                question: "Rumus perhitungan reproduksi bakteri adalah?",
+                options: [
+                    "N = N₀ + 2ⁿ",
+                    "N = N₀ × 2ⁿ",
+                    "N = N₀ ÷ 2ⁿ",
+                    "N = N₀ - 2ⁿ"
+                ],
+                correct: 1,
+                explanation: "Rumus N = N₀ × 2ⁿ, dimana N₀ = jumlah awal, n = jumlah generasi."
+            },
+            {
+                category: "peranan",
+                question: "Bakteri yang berperan dalam siklus nitrogen dengan mengoksidasi amonia adalah?",
+                options: [
+                    "Rhizobium",
+                    "Nitrosomonas",
+                    "Azotobacter",
+                    "Clostridium"
+                ],
+                correct: 1,
+                explanation: "Nitrosomonas adalah bakteri kemoautotrof yang mengoksidasi amonia menjadi nitrit."
+            },
+            {
+                category: "klasifikasi",
+                question: "Perbedaan utama Archaebacteria dan Eubacteria adalah?",
+                options: [
+                    "Ukuran sel",
+                    "Bentuk sel",
+                    "Komposisi dinding sel",
+                    "Jumlah flagela"
+                ],
+                correct: 2,
+                explanation: "Archaebacteria memiliki dinding sel pseudomurein, sedangkan Eubacteria memiliki peptidoglikan."
+            },
+            {
+                category: "struktur",
+                question: "Bakteri berbentuk spiral disebut?",
+                options: [
+                    "Kokus",
+                    "Basil",
+                    "Spirilum",
+                    "Sarcina"
+                ],
+                correct: 2,
+                explanation: "Spirilum atau spirochete adalah bakteri yang berbentuk spiral atau bergelombang."
+            },
+            {
+                category: "cyanobacteria",
+                question: "Ukuran Cyanobacteria berkisar antara?",
+                options: [
+                    "0,1 - 0,5 mm",
+                    "1 - 60 mm",
+                    "100 - 200 mm",
+                    "1 - 10 cm"
+                ],
+                correct: 1,
+                explanation: "Ukuran tubuh Cyanobacteria berkisar 1 mm hingga 60 mm."
+            },
+            {
+                category: "peranan",
+                question: "Bakteri penyebab tifus adalah?",
+                options: [
+                    "Salmonella typhi",
+                    "Shigella dysenteriae",
+                    "Vibrio cholerae",
+                    "Escherichia coli"
+                ],
+                correct: 0,
+                explanation: "Salmonella typhi adalah bakteri penyebab demam tifoid (tifus)."
+            },
+            {
+                category: "klasifikasi",
+                question: "Contoh bakteri halofil ekstrem adalah?",
+                options: [
+                    "E. coli",
+                    "Halobacterium",
+                    "Lactobacillus",
+                    "Streptococcus"
+                ],
+                correct: 1,
+                explanation: "Halobacterium adalah Archaebacteria yang hidup di lingkungan dengan kadar garam sangat tinggi."
+            }
+        ];
+
+        let currentQuestions = [];
+        let currentQuestionIndex = 0;
+        let score = 0;
+        let userAnswers = [];
+        let selectedCategory = "all";
+        let selectedOption = null;
+
+        function startQuiz() {
+            const count = parseInt(document.getElementById('questionCount').value);
+            selectedCategory = document.getElementById('categorySelect').value;
+
+            if (count < 1 || count > 60) {
+                alert('Jumlah soal harus antara 1 dan 60');
+                return;
+            }
+
+            // Filter questions by category
+            let filteredQuestions = questionBank;
+            if (selectedCategory !== 'all') {
+                filteredQuestions = questionBank.filter(q => q.category === selectedCategory);
+            }
+
+            if (filteredQuestions.length === 0) {
+                alert('Tidak ada soal untuk kategori ini');
+                return;
+            }
+
+            // Shuffle and select questions
+            const shuffled = filteredQuestions.sort(() => Math.random() - 0.5);
+            currentQuestions = shuffled.slice(0, Math.min(count, filteredQuestions.length));
+
+            currentQuestionIndex = 0;
+            score = 0;
+            userAnswers = [];
+            selectedOption = null;
+
+            document.querySelector('.setup-screen').classList.remove('active');
+            document.querySelector('.quiz-screen').classList.add('active');
+
+            displayQuestion();
+        }
+
+        function displayQuestion() {
+            const question = currentQuestions[currentQuestionIndex];
+            const categoryNames = {
+                'definisi': 'Definisi & Sejarah',
+                'struktur': 'Struktur Bakteri',
+                'reproduksi': 'Reproduksi',
+                'klasifikasi': 'Klasifikasi',
+                'peranan': 'Peranan Bakteri',
+                'cyanobacteria': 'Cyanobacteria'
+            };
+
+            document.getElementById('currentCategory').textContent = categoryNames[question.category];
+            document.getElementById('questionNumber').textContent = `Soal ${currentQuestionIndex + 1} dari ${currentQuestions.length}`;
+            document.getElementById('questionText').textContent = question.question;
+
+            // Create options
+            const optionsContainer = document.getElementById('optionsContainer');
+            optionsContainer.innerHTML = '';
+
+            question.options.forEach((option, index) => {
+                const optionDiv = document.createElement('div');
+                optionDiv.className = 'option';
+                optionDiv.onclick = () => selectOption(index);
+
+                optionDiv.innerHTML = `
+                    <input type="radio" name="answer" id="option${index}" value="${index}">
+                    <span class="option-label">${String.fromCharCode(65 + index)}.</span>
+                    <label for="option${index}" style="cursor: pointer; flex: 1;">${option}</label>
+                `;
+
+                optionsContainer.appendChild(optionDiv);
+            });
+
+            // Reset feedback and buttons
+            document.getElementById('feedback').classList.remove('show', 'correct', 'incorrect');
+            document.getElementById('submitBtn').disabled = true;
+            document.getElementById('submitBtn').style.display = 'block';
+            document.getElementById('nextBtn').style.display = 'none';
+            selectedOption = null;
+
+            // Update progress bar
+            const progress = ((currentQuestionIndex) / currentQuestions.length) * 100;
+            document.getElementById('progressFill').style.width = progress + '%';
+        }
+
+        function selectOption(index) {
+            // Remove previous selection
+            document.querySelectorAll('.option').forEach(opt => {
+                opt.classList.remove('selected');
+            });
+
+            // Add selection to clicked option
+            const options = document.querySelectorAll('.option');
+            options[index].classList.add('selected');
+            document.getElementById(`option${index}`).checked = true;
+
+            selectedOption = index;
+            document.getElementById('submitBtn').disabled = false;
+        }
+
+        function checkAnswer() {
+            if (selectedOption === null) return;
+
+            const question = currentQuestions[currentQuestionIndex];
+            const isCorrect = selectedOption === question.correct;
+
+            userAnswers.push({
+                question: question.question,
+                userAnswer: question.options[selectedOption],
+                correctAnswer: question.options[question.correct],
+                isCorrect: isCorrect,
+                explanation: question.explanation
+            });
+
+            if (isCorrect) {
+                score++;
+            }
+
+            // Highlight correct and incorrect answers
+            const options = document.querySelectorAll('.option');
+            options.forEach((opt, index) => {
+                opt.classList.add('disabled');
+                opt.onclick = null;
+
+                if (index === question.correct) {
+                    opt.classList.add('correct');
+                }
+                if (index === selectedOption && !isCorrect) {
+                    opt.classList.add('incorrect');
+                }
+            });
+
+            // Show feedback
+            const feedback = document.getElementById('feedback');
+            feedback.classList.add('show');
+            feedback.classList.add(isCorrect ? 'correct' : 'incorrect');
+
+            document.getElementById('feedbackTitle').innerHTML = isCorrect
+                ? '✅ Jawaban Anda Benar!'
+                : '❌ Jawaban Anda Kurang Tepat';
+
+            document.getElementById('feedbackText').innerHTML = question.explanation;
+
+            document.getElementById('submitBtn').style.display = 'none';
+            document.getElementById('nextBtn').style.display = 'block';
+        }
+
+        function nextQuestion() {
+            currentQuestionIndex++;
+
+            if (currentQuestionIndex < currentQuestions.length) {
+                displayQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function showResults() {
+            document.querySelector('.quiz-screen').classList.remove('active');
+            document.querySelector('.result-screen').classList.add('active');
+
+            const percentage = Math.round((score / currentQuestions.length) * 100);
+            const incorrectCount = currentQuestions.length - score;
+
+            document.getElementById('finalScore').textContent = score;
+            document.getElementById('totalQuestions').textContent = currentQuestions.length;
+            document.getElementById('percentage').textContent = `(${percentage}%)`;
+            document.getElementById('correctCount').textContent = score;
+            document.getElementById('incorrectCount').textContent = incorrectCount;
+
+            // Determine grade
+            let grade = '';
+            let gradeClass = '';
+            if (percentage >= 90) {
+                grade = 'Nilai A - Sempurna! 🌟';
+                gradeClass = 'grade-a';
+            } else if (percentage >= 80) {
+                grade = 'Nilai B - Bagus! 👍';
+                gradeClass = 'grade-b';
+            } else if (percentage >= 70) {
+                grade = 'Nilai C - Cukup Baik 👌';
+                gradeClass = 'grade-c';
+            } else if (percentage >= 60) {
+                grade = 'Nilai D - Perlu Belajar Lagi 📚';
+                gradeClass = 'grade-d';
+            } else {
+                grade = 'Nilai E - Terus Berlatih! 💪';
+                gradeClass = 'grade-e';
+            }
+
+            const gradeElement = document.getElementById('grade');
+            gradeElement.textContent = grade;
+            gradeElement.className = `score-grade ${gradeClass}`;
+
+            // Display detailed results
+            let detailsHTML = '<h3 style="margin-bottom: 15px; color: #333;">📋 Pembahasan Soal:</h3>';
+            userAnswers.forEach((item, index) => {
+                detailsHTML += `
+                    <div class="result-item">
+                        <div class="result-item-question">
+                            ${item.isCorrect ? '✅' : '❌'} ${index + 1}. ${item.question}
+                        </div>
+                        <div class="result-item-answer user-answer">
+                            <strong>Jawaban Anda:</strong> ${item.userAnswer}
+                        </div>
+                        ${!item.isCorrect ? `
+                            <div class="result-item-answer correct-answer">
+                                <strong>✓ Jawaban yang Benar:</strong> ${item.correctAnswer}
+                            </div>
+                        ` : ''}
+                        <div style="margin-top: 10px; padding: 10px; background: #e7f3ff; border-radius: 5px; font-size: 0.95em;">
+                            <strong>💡 Penjelasan:</strong> ${item.explanation}
+                        </div>
+                    </div>
+                `;
+            });
+
+            document.getElementById('resultDetails').innerHTML = detailsHTML;
+        }
+
+        function restartQuiz() {
+            document.querySelector('.result-screen').classList.remove('active');
+            document.querySelector('.setup-screen').classList.add('active');
+            currentQuestions = [];
+            currentQuestionIndex = 0;
+            score = 0;
+            userAnswers = [];
+            selectedOption = null;
+        }
+    </script>
+</body>
+</html>
